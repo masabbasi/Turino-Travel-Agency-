@@ -1,6 +1,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #28a745;
+  --secondary: #10411b;
+  --complementry: #009eca;
+  --textColor: #282828;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,12 +30,12 @@ body {
 }
 
 body {
-  color: var(--foreground);
+  color: var(--textColor);
   background: var(--background);
   /* font-family: Arial, Helvetica, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-	font-weight:900;
+  font-weight: 900;
 }
 
 a {
