@@ -4,6 +4,7 @@
     "paths": {
       "@public/*": ["public/*"],
       "@app/*": ["src/app/*"],
+      "@icon/*": ["src/components/icon/*"],
       "@layout/*": ["src/components/layout/*"],
       "@modal/*": ["src/components/modal/*"],
       "@module/*": ["src/components/module/*"],
