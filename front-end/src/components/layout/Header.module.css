@@ -1,4 +1,5 @@
 .header {
+  margin-bottom: 0.8rem;
 }
 
 .mobileHeader {
@@ -109,14 +110,22 @@
     display: flex;
   }
 
-  .desktopHeaderRight {
+  .desktopMenuLogo {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 2rem;
   }
 
   .desktopMenuLogo svg {
     width: 5rem;
+    background-color: red;
+  }
+
+  .desktopHeaderRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .desktopHeaderRight ul {
@@ -158,10 +167,36 @@
 
 /* Tablet Size */
 @media screen and (min-width: 768px) {
+  .desktopMenuLogo {
+    margin-left: 3rem;
+  }
+
+  .desktopHeaderRight ul li {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .desktopHeaderLeft {
+    font-size: 1.3rem;
+    padding: 0.1rem 0.3em;
+  }
 }
 
 /* Laptop Size */
 @media screen and (min-width: 992px) {
+  .desktopMenuLogo {
+    margin-left: 4rem;
+  }
+
+  .desktopHeaderRight ul li {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  .desktopHeaderLeft {
+    font-size: 1.8rem;
+    padding: 0.2rem 0.4rem;
+  }
 }
 
 /* Desktop Size */
