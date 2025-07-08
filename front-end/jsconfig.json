@@ -9,6 +9,7 @@
       "@module/*": ["src/components/module/*"],
       "@template/*": ["src/components/template/*"],
       "@providers/*": ["src/providers/*"],
+      "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"]
     }
   }
