@@ -1,5 +1,5 @@
-import styles from "./Home.module.css";
+import HomePage from "@template/HomePage";
 
 export default function Home() {
-  return <div>Home</div>;
+  return <HomePage />;
 }

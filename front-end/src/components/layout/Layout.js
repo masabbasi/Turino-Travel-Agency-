@@ -9,7 +9,7 @@ const queryClient = new QueryClient();
 
 function Layout({ children }) {
   return (
-    <>
+    <div>
       <div className={styles.container}>
         <QueryClientProvider client={queryClient}>
           <Header />
@@ -27,7 +27,7 @@ function Layout({ children }) {
         {children}
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 

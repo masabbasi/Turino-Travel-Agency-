@@ -12,11 +12,24 @@ import SignIn from "@icon/SignIn";
 import VolumeLow from "@icon/VolumeLow";
 import HamburgerMenu from "@icon/HamburgerMenu";
 import { useUser } from "@hooks/useUser";
+import Login from "@modal/Login";
+import Otp from "@modal/Otp";
 
 function Header() {
+  const [modal, setModal] = useState(0);
+
   const [toggelHamburger, setToggelHamburger] = useState(false);
   const hamburgerHandler = () => {
     setToggelHamburger(!toggelHamburger);
+  };
+
+  const coverHandler = () => {
+    setToggelHamburger(false);
+    setModal(0);
+  };
+
+  const loginHandler = () => {
+    setModal(1);
   };
 
   const { data } = useUser();
@@ -57,11 +70,19 @@ function Header() {
               </ul>
             </div>
             <div
-              className={`${toggelHamburger && styles.cover}`}
-              onClick={hamburgerHandler}
+              className={`${(toggelHamburger || modal > 0) && styles.cover}`}
+              onClick={coverHandler}
             ></div>
           </nav>
-          <div>{data === "undefined" ? <SignIn /> : "ورود"}</div>
+          <div>
+            {!data ? (
+              <div onClick={loginHandler}>
+                <SignIn />
+              </div>
+            ) : (
+              "ورود"
+            )}
+          </div>
         </div>
         <div className={styles.desktopHeader}>
           <div className={styles.desktopHeaderRight}>
@@ -84,11 +105,19 @@ function Header() {
             </ul>
           </div>
           <div className={styles.desktopHeaderLeft}>
-            <Profile />
-            ورود | ثبت نام
+            {!data === "undefined" ? (
+              <div onClick={loginHandler}>
+                <Profile />
+                ورود | ثبت نام
+              </div>
+            ) : (
+              "ورود"
+            )}
           </div>
         </div>
       </header>
+      {modal === 1 && <Login setModal={setModal} />}
+      {modal === 2 && <Otp setModal={setModal} />}
     </>
   );
 }
