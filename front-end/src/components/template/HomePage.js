@@ -1,11 +1,5 @@
-import Login from "@modal/Login";
-
 function HomePage() {
-  return (
-    <>
-  
-    </>
-  );
+  return <></>;
 }
 
 export default HomePage;
