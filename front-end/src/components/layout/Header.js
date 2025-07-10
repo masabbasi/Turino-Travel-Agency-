@@ -11,12 +11,15 @@ import Profile from "@icon/Profile";
 import SignIn from "@icon/SignIn";
 import VolumeLow from "@icon/VolumeLow";
 import HamburgerMenu from "@icon/HamburgerMenu";
+import { useUser } from "@hooks/useUser";
 
 function Header() {
   const [toggelHamburger, setToggelHamburger] = useState(false);
   const hamburgerHandler = () => {
     setToggelHamburger(!toggelHamburger);
   };
+
+  const { data } = useUser();
 
   return (
     <>
@@ -58,9 +61,7 @@ function Header() {
               onClick={hamburgerHandler}
             ></div>
           </nav>
-          <div>
-            <SignIn />
-          </div>
+          <div>{data === "undefined" ? <SignIn /> : "ورود"}</div>
         </div>
         <div className={styles.desktopHeader}>
           <div className={styles.desktopHeaderRight}>

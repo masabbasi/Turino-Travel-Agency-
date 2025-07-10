@@ -1,13 +1,19 @@
+"use client";
 import Header from "@layout/Header";
 import Footer from "@layout/Footer";
 import styles from "@layout/Layout.module.css";
 import Image from "next/image";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function Layout({ children }) {
   return (
     <>
       <div className={styles.container}>
-        <Header />
+        <QueryClientProvider client={queryClient}>
+          <Header />
+        </QueryClientProvider>
       </div>
       <div className={styles.topImage}>
         <Image
