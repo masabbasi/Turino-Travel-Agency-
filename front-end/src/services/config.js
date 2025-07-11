@@ -1,3 +1,6 @@
+"use client";
+
+import { getCookies } from "@utils/cookies";
 import axios from "axios";
 
 const api = axios.create({
@@ -9,7 +12,9 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (request) => {
-    request.headers["Authorization"] = "token";
+    const cookies = getCookies();
+    const accessToken = cookies.accessToken;
+    request.headers["Authorization"] = `Bearer ${accessToken}`;
     return request;
   },
   (error) => Promise.reject(error)

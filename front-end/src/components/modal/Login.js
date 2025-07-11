@@ -1,10 +1,11 @@
 "use client";
 import Close from "@icon/Close";
 import styles from "@modal/Login.module.css";
+import api from "@services/config";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
 
-function Login({ setModal }) {
+function Login({ setModal, setOtpCode }) {
   const closeHandler = () => {
     setModal(0);
   };
@@ -30,8 +31,13 @@ function Login({ setModal }) {
           validationSchema={validationSchema}
           validateOnChange={true}
           validateOnBlur={true}
-          onSubmit={(values, { setSubmitting }) => {
-            setModal(2);
+          onSubmit={async (values, { setSubmitting }) => {
+            const response = await api.post(`/auth/send-otp`, values);
+            if (response.code) {
+              setOtpCode({ mobile: values.mobile, code: response.code });
+              console.log(response.code);
+              setModal(2);
+            }
           }}
         >
           {({ isSubmitting, getFieldProps }) => (

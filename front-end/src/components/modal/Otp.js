@@ -1,11 +1,19 @@
 "use client";
+import { useQueryClient } from "@tanstack/react-query";
+
 import ArrowLeft from "@icon/ArrowLeft";
 import styles from "@modal/Otp.module.css";
+import api from "@services/config";
+import { setCookies } from "@utils/cookies";
 import { Formik, Form } from "formik";
 import { useEffect, useRef, useState } from "react";
 import * as yup from "yup";
-function Otp({ setModal }) {
+
+function Otp({ setModal, otpCode, setOtpCode }) {
+  const queryClient = useQueryClient();
+
   const inputRefs = [
+    useRef(null),
     useRef(null),
     useRef(null),
     useRef(null),
@@ -46,9 +54,14 @@ function Otp({ setModal }) {
       .required()
       .length(1)
       .matches(/^[0-9]{1}$/),
+    code6: yup
+      .string()
+      .required()
+      .length(1)
+      .matches(/^[0-9]{1}$/),
   });
 
-  const [timer, setTimer] = useState(0); // 2 دقیقه = 120 ثانیه
+  const [timer, setTimer] = useState(0);
   const [isTimerActive, setIsTimerActive] = useState(true);
 
   useEffect(() => {
@@ -65,8 +78,14 @@ function Otp({ setModal }) {
     return () => clearInterval(interval);
   }, [timer, isTimerActive]);
 
-  const resetTimer = () => {
-    setTimer(120);
+  const resetTimer = async () => {
+    const response = await api.post(`/auth/send-otp`, {
+      mobile: otpCode.mobile,
+    });
+    if (response.code) {
+      setOtpCode({ ...otpCode, code: response.code });
+    }
+    setTimer(30);
     setIsTimerActive(true);
   };
 
@@ -85,22 +104,44 @@ function Otp({ setModal }) {
             code3: "",
             code4: "",
             code5: "",
+            code6: "",
           }}
           validationSchema={validationSchema}
           validateOnChange={true}
           validateOnBlur={true}
-          onSubmit={(values, { setSubmitting }) => {
-            // setModal(2);
+          onSubmit={async (values, { setSubmitting }) => {
+            setOtpCode({
+              ...otpCode,
+              code:
+                values.code1 +
+                values.code2 +
+                values.code3 +
+                values.code4 +
+                values.code5 +
+                values.code6,
+            });
+            const response = await api.post("/auth/check-otp", otpCode);
+            if (response.accessToken) {
+              setCookies(response);
+              queryClient.invalidateQueries({ queryKey: ["user"] });
+
+              setModal(0);
+              setOtpCode({ mobile: "", code: "" });
+            } else {
+              setTimer(30);
+            }
           }}
         >
           {({ isSubmitting, getFieldProps, errors, touched }) => (
             <Form>
               <div className={styles.inputContainer}>
                 <div className={styles.label}>
-                  کد تائید به شماره *** ارسال شد!{" "}
+                  {`کد تائید به شماره ${otpCode.mobile} ارسال شد.`}
+                  <br />
+                  {`کد تائید: ${otpCode.code}`}
                 </div>
                 <div className={styles.inputsContainer}>
-                  {[1, 2, 3, 4, 5].map((num, index) => (
+                  {[1, 2, 3, 4, 5, 6].map((num, index) => (
                     <input
                       key={`code${num}`}
                       type="text"

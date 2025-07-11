@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "@layout/Header.module.css";
 import AirplaneSquare from "@icon/AirplaneSquare";
@@ -14,9 +14,12 @@ import HamburgerMenu from "@icon/HamburgerMenu";
 import { useUser } from "@hooks/useUser";
 import Login from "@modal/Login";
 import Otp from "@modal/Otp";
+import { getCookies } from "@utils/cookies";
 
 function Header() {
   const [modal, setModal] = useState(0);
+  const [otpCode, setOtpCode] = useState({ mobile: "", code: "" });
+  // const [userLogged, setUserLogged] = useState(false);
 
   const [toggelHamburger, setToggelHamburger] = useState(false);
   const hamburgerHandler = () => {
@@ -33,7 +36,7 @@ function Header() {
   };
 
   const { data } = useUser();
-
+  console.log(data);
   return (
     <>
       <header className={styles.header}>
@@ -75,12 +78,12 @@ function Header() {
             ></div>
           </nav>
           <div>
-            {!data ? (
+            {data ? (
+              data?.mobile
+            ) : (
               <div onClick={loginHandler}>
                 <SignIn />
               </div>
-            ) : (
-              "ورود"
             )}
           </div>
         </div>
@@ -116,8 +119,10 @@ function Header() {
           </div>
         </div>
       </header>
-      {modal === 1 && <Login setModal={setModal} />}
-      {modal === 2 && <Otp setModal={setModal} />}
+      {modal === 1 && <Login setModal={setModal} setOtpCode={setOtpCode} />}
+      {modal === 2 && (
+        <Otp setModal={setModal} otpCode={otpCode} setOtpCode={setOtpCode} />
+      )}
     </>
   );
 }
