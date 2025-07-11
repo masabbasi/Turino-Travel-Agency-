@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.2rem;
+  padding: 0.8rem;
   color: var(--textColor);
   font-size: 0.8rem;
   width: 100%;
@@ -33,8 +33,26 @@
   border-radius: 100%;
 }
 
+/* Responsive - Mobile First */
+/* Mobile Size */
 @media screen and (min-width: 576px) {
   .subMenu {
     left: -1.5rem;
+  }
+
+  .subMenuItem:first-child {
+    cursor: auto;
+  }
+
+  .subMenuItem:hover {
+    background-color: var(--primary);
+    color: var(--baseColor);
+  }
+}
+
+/* Laptop Size */
+@media screen and (min-width: 992px) {
+  .subMenuItem {
+    font-size: 1rem;
   }
 }

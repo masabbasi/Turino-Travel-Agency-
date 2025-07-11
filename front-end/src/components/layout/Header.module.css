@@ -51,6 +51,7 @@
   transition: transform 0.3s ease;
 }
 
+/* Responsive - Mobile First */
 /* Mobile Size */
 @media screen and (min-width: 576px) {
   .mobileHeader {

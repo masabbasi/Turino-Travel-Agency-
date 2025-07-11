@@ -6,11 +6,8 @@ import SubMenu from "./SubMenu";
 import styles from "@module/DesktopHeader.module.css";
 
 function DesktopHeader({ toggleSubMenu, showSubMenu, loginHandler, data }) {
-  console.log(data);
   return (
-    <>
-      {" "}
-      <div className={styles.desktopHeaderRight}>
+    <>      <div className={styles.desktopHeaderRight}>
         <div className={styles.desktopMenuLogo}>
           {/* <Logo /> */}
           <img src="/images/logo.webp" />

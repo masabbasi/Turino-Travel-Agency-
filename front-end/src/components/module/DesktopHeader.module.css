@@ -109,6 +109,10 @@
     margin-left: 4rem;
   }
 
+	.desktopHeaderRight ul{
+		gap: 2rem;
+	}
+
   .desktopHeaderRight ul li {
     font-size: 1.8rem;
     font-weight: 500;
