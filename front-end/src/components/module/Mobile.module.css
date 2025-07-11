@@ -1,0 +1,79 @@
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: var(--baseColor);
+  height: 100vh;
+  width: 50%;
+  z-index: 2;
+  padding-top: 3rem;
+  border-radius: 1.2rem 0 0 1.2rem;
+  transition: all 0.3s ease-in;
+}
+
+.mobileMenu__active {
+  right: 0;
+}
+
+.mobileMenuLogo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mobileMenuLogo svg {
+  height: 3rem;
+}
+
+.mobileMenuList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
+}
+
+.mobileMenuList li {
+  padding: 15px;
+  color: var(--textColor);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.mobileMenuList li:hover {
+  background-color: var(--primary);
+  color: var(--baseColor);
+}
+
+.mobileMenuList li:hover path {
+  fill: var(--baseColor);
+}
+
+.userLoggedContainer {
+  position: relative;
+}
+
+.userLogged {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  font-weight: 600;
+  gap: 0.1rem;
+  font-size: 1rem;
+}
+
+.rotateUp {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}

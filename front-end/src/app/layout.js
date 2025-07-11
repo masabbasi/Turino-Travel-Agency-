@@ -7,13 +7,11 @@ export const metadata = {
   description: "Masoud Abbasi",
 };
 
-
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={vazirmatn.className}>
       <body>
-          <Layout>{children}</Layout>
-
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

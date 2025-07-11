@@ -1,13 +1,19 @@
 "use client";
+
+import { useRef } from "react";
+
+import { Formik, Form } from "formik";
 import { useQueryClient } from "@tanstack/react-query";
 
-import ArrowLeft from "@icon/ArrowLeft";
-import styles from "@modal/Otp.module.css";
+import Timer from "@module/Timer";
+
 import api from "@services/config";
+import { otpValidationSchema } from "@helper/validation";
 import { setCookies } from "@utils/cookies";
-import { Formik, Form } from "formik";
-import { useEffect, useRef, useState } from "react";
-import * as yup from "yup";
+
+import ArrowLeft from "@icon/ArrowLeft";
+
+import styles from "@modal/Otp.module.css";
 
 function Otp({ setModal, otpCode, setOtpCode }) {
   const queryClient = useQueryClient();
@@ -20,83 +26,20 @@ function Otp({ setModal, otpCode, setOtpCode }) {
     useRef(null),
     useRef(null),
   ];
+
   const backHandler = () => {
     setModal(1);
   };
 
-  const validationSchema = yup.object().shape({
-    code1: yup
-      .string()
-      .required()
-      .length(1)
-      .matches(/^[0-9]{1}$/),
-
-    code2: yup
-      .string()
-      .required()
-      .length(1)
-      .matches(/^[0-9]{1}$/),
-
-    code3: yup
-      .string()
-      .required()
-      .length(1)
-      .matches(/^[0-9]{1}$/),
-
-    code4: yup
-      .string()
-      .required()
-      .length(1)
-      .matches(/^[0-9]{1}$/),
-
-    code5: yup
-      .string()
-      .required()
-      .length(1)
-      .matches(/^[0-9]{1}$/),
-    code6: yup
-      .string()
-      .required()
-      .length(1)
-      .matches(/^[0-9]{1}$/),
-  });
-
-  const [timer, setTimer] = useState(0);
-  const [isTimerActive, setIsTimerActive] = useState(true);
-
-  useEffect(() => {
-    let interval;
-
-    if (isTimerActive && timer > 0) {
-      interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
-      }, 1000);
-    } else if (timer === 0) {
-      setIsTimerActive(false);
-    }
-
-    return () => clearInterval(interval);
-  }, [timer, isTimerActive]);
-
-  const resetTimer = async () => {
-    const response = await api.post(`/auth/send-otp`, {
-      mobile: otpCode.mobile,
-    });
-    if (response.code) {
-      setOtpCode({ ...otpCode, code: response.code });
-    }
-    setTimer(30);
-    setIsTimerActive(true);
-  };
-
   return (
     <>
-      {/* <div className={styles.cover}></div> */}
       <div className={styles.container}>
         <div className={styles.back} onClick={backHandler}>
           <ArrowLeft />
         </div>
+
         <p className={styles.title}>کد تائید را وارد کنید</p>
+
         <Formik
           initialValues={{
             code1: "",
@@ -106,21 +49,19 @@ function Otp({ setModal, otpCode, setOtpCode }) {
             code5: "",
             code6: "",
           }}
-          validationSchema={validationSchema}
+          validationSchema={otpValidationSchema}
           validateOnChange={true}
           validateOnBlur={true}
           onSubmit={async (values, { setSubmitting }) => {
+            const createOtpCode = Object.values(values).join("");
+
             setOtpCode({
               ...otpCode,
-              code:
-                values.code1 +
-                values.code2 +
-                values.code3 +
-                values.code4 +
-                values.code5 +
-                values.code6,
+              code: createOtpCode,
             });
+
             const response = await api.post("/auth/check-otp", otpCode);
+
             if (response.accessToken) {
               setCookies(response);
               queryClient.invalidateQueries({ queryKey: ["user"] });
@@ -129,6 +70,8 @@ function Otp({ setModal, otpCode, setOtpCode }) {
             } else {
               setTimer(30);
             }
+
+            setSubmitting(false);
           }}
         >
           {({ isSubmitting, getFieldProps, errors, touched }) => (
@@ -170,27 +113,12 @@ function Otp({ setModal, otpCode, setOtpCode }) {
                     />
                   ))}
                 </div>
-                <div className={styles.error}>
-                  {!!errors.code5 === true &&
-                    "لطفا کد تائید را درست وارد کنید!"}
-                </div>
+                {/* <div className={styles.error}>
+                  {!!errors && "لطفا کد تائید را درست وارد کنید!"}
+                </div> */}
               </div>
               <div className={styles.timer}>
-                {" "}
-                {isTimerActive ? (
-                  <span>
-                    {Math.floor(timer / 60)}:
-                    {(timer % 60).toString().padStart(2, "0")} تا ارسال مجدد کد
-                  </span>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={resetTimer}
-                    className={styles.resendButton}
-                  >
-                    ارسال مجدد کد
-                  </button>
-                )}
+                <Timer otpCode={otpCode} setOtpCode={setOtpCode} />
               </div>
               <button
                 className={styles.button}

@@ -1,22 +1,18 @@
 "use client";
-import Close from "@icon/Close";
-import styles from "@modal/Login.module.css";
-import api from "@services/config";
+
 import { Formik, Form, ErrorMessage } from "formik";
-import * as yup from "yup";
+
+import api from "@services/config";
+import { loginValidationSchema } from "@helper/validation";
+
+import Close from "@icon/Close";
+
+import styles from "@modal/Login.module.css";
 
 function Login({ setModal, setOtpCode }) {
   const closeHandler = () => {
     setModal(0);
   };
-
-  const validationSchema = yup.object().shape({
-    mobile: yup
-      .string()
-      .required("موبایل خود را وارد کنید")
-      .length(11, "شماره موبایل باید دقیقاً ۱۱ رقم باشد")
-      .matches(/^09[0-9]{9}$/, "شماره موبایل باید با 09 شروع شود!"),
-  });
 
   return (
     <>
@@ -28,15 +24,17 @@ function Login({ setModal, setOtpCode }) {
 
         <Formik
           initialValues={{ mobile: "" }}
-          validationSchema={validationSchema}
+          validationSchema={loginValidationSchema}
           validateOnChange={true}
           validateOnBlur={true}
           onSubmit={async (values, { setSubmitting }) => {
             const response = await api.post(`/auth/send-otp`, values);
+
             if (response.code) {
               setOtpCode({ mobile: values.mobile, code: response.code });
               console.log(response.code);
               setModal(2);
+              setSubmitting(false);
             }
           }}
         >

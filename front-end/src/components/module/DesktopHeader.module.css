@@ -1,0 +1,128 @@
+.userLoggedContainer {
+  position: relative;
+}
+
+.userLogged {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  font-weight: 600;
+  gap: 0.1rem;
+  font-size: 1rem;
+}
+
+.rotateUp {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive - Mobile First */
+
+/* Small Device Size */
+@media screen and (min-width: 450px) {
+}
+
+/* Mobile Size */
+@media screen and (min-width: 576px) {
+  .desktopMenuLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+    width: 7rem;
+    margin-left: 1rem;
+  }
+
+  .desktopMenuLogo img {
+    width: 100%;
+  }
+
+  .desktopMenuLogo svg {
+    width: 5rem;
+    background-color: red;
+  }
+
+  .desktopHeaderRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .desktopHeaderRight ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    list-style: none;
+  }
+
+  .desktopHeaderRight ul li {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .desktopHeaderRight ul li:hover {
+    color: var(--primary);
+  }
+
+  .desktopHeaderLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    border: 0.1rem solid var(--primary);
+    border-radius: 0.8rem;
+    font-weight: 500;
+    font-size: 0.8rem;
+    padding-left: 0.3rem;
+    cursor: pointer;
+  }
+
+  .logInContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Tablet Size */
+@media screen and (min-width: 768px) {
+  .desktopMenuLogo {
+    margin-left: 3rem;
+  }
+
+  .desktopHeaderRight ul li {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .desktopHeaderLeft {
+    font-size: 1.3rem;
+    padding: 0.1rem 0.3em;
+  }
+}
+
+/* Laptop Size */
+@media screen and (min-width: 992px) {
+  .desktopMenuLogo {
+    margin-left: 4rem;
+  }
+
+  .desktopHeaderRight ul li {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  .desktopHeaderLeft {
+    font-size: 1.8rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+/* Desktop Size */
+@media screen and (min-width: 1200px) {
+}
+/* special size */
+/* @media screen and (max-width: 000px) {
+} */

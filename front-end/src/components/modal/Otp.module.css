@@ -72,11 +72,11 @@
   border: 0.1rem solid red !important;
 }
 
-.error {
+/* .error {
   color: red;
   margin: 0.5rem 0;
   height: 1.5rem;
-}
+} */
 
 .timer {
   display: flex;
@@ -85,13 +85,6 @@
   margin: 0.7rem 0.7rem 2rem;
   font-weight: 300;
   font-size: 1.2rem;
-}
-
-.resendButton {
-  border: none;
-  outline: none;
-  padding: 1rem;
-  border-radius: 0.8rem;
 }
 
 .button {
@@ -104,12 +97,6 @@
   color: var(--baseColor);
   padding: 1.3rem 0;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
 
 /* Responsive - Mobile First */
 
@@ -128,13 +115,13 @@
 }
 
 /* Tablet Size */
-@media screen and (min-width: 768px) {
-}
+/* @media screen and (min-width: 768px) {
+} */
 
 /* Laptop Size */
-@media screen and (min-width: 992px) {
-}
+/* @media screen and (min-width: 992px) {
+} */
 
 /* Desktop Size */
-@media screen and (min-width: 1200px) {
-}
+/* @media screen and (min-width: 1200px) {
+} */

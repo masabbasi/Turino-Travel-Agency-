@@ -1,0 +1,40 @@
+.subMenu {
+  position: absolute;
+  top: 100%;
+  left: 1.5rem;
+  background-color: var(--baseColor);
+  width: 15rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.subMenuItem {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.2rem;
+  color: var(--textColor);
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.subMenuItem:first-child {
+  background-color: #f4f4f4;
+}
+
+.subMenuItem:first-child svg {
+  background-color: #d9d9d9;
+  padding: 0.1rem;
+  border-radius: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .subMenu {
+    left: -1.5rem;
+  }
+}
