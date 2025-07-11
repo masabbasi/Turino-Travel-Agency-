@@ -14,9 +14,16 @@ import HamburgerMenu from "@icon/HamburgerMenu";
 import { useUser } from "@hooks/useUser";
 import Login from "@modal/Login";
 import Otp from "@modal/Otp";
-import { getCookies } from "@utils/cookies";
+import { clearCookies } from "@utils/cookies";
+import ArrowDown from "@icon/ArrowDown";
+import Account from "@icon/Account";
+import User from "@icon/User";
+import Logout from "@icon/Logout";
+import { useQueryClient } from "@tanstack/react-query";
 
 function Header() {
+  const queryClient = useQueryClient();
+
   const [modal, setModal] = useState(0);
   const [otpCode, setOtpCode] = useState({ mobile: "", code: "" });
   // const [userLogged, setUserLogged] = useState(false);
@@ -35,8 +42,19 @@ function Header() {
     setModal(1);
   };
 
+  const exitHandler = async () => {
+    clearCookies();
+    await queryClient.invalidateQueries({ queryKey: ["user"] });
+  };
+
+  const [showSubMenu, setShowSubMenu] = useState(false);
+
+  const toggleSubMenu = () => {
+    setShowSubMenu(!showSubMenu);
+  };
+
   const { data } = useUser();
-  console.log(data);
+
   return (
     <>
       <header className={styles.header}>
@@ -79,7 +97,11 @@ function Header() {
           </nav>
           <div>
             {data ? (
-              data?.mobile
+              <div className={styles.userLogged} onClick={toggleSubMenu}>
+                <Profile />
+                {data?.mobile}
+                <ArrowDown />
+              </div>
             ) : (
               <div onClick={loginHandler}>
                 <SignIn />
@@ -90,7 +112,8 @@ function Header() {
         <div className={styles.desktopHeader}>
           <div className={styles.desktopHeaderRight}>
             <div className={styles.desktopMenuLogo}>
-              <Logo />
+              {/* <Logo /> */}
+              <img src="/images/logo.webp" />
             </div>
             <ul>
               <li>
@@ -108,13 +131,35 @@ function Header() {
             </ul>
           </div>
           <div className={styles.desktopHeaderLeft}>
-            {!data === "undefined" ? (
-              <div onClick={loginHandler}>
+            {data ? (
+              <div className={styles.userLoggedContainer}>
+                <div className={styles.userLogged} onClick={toggleSubMenu}>
+                  <Profile />
+                  {data?.mobile}
+                  <ArrowDown className={showSubMenu ? styles.rotateUp : ""} />
+                </div>
+                {showSubMenu && (
+                  <div className={styles.subMenu}>
+                    <div className={styles.subMenuItem}>
+                      <User />
+                      <span>{data?.mobile}</span>
+                    </div>
+                    <div className={styles.subMenuItem}>
+                      <Account />
+                      <Link href="/dashboard">اطلاعات حساب کاربری</Link>
+                    </div>
+                    <div className={styles.subMenuItem} onClick={exitHandler}>
+                      <Logout />
+                      <span>خروج از حساب کاربری</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className={styles.logInContainer} onClick={loginHandler}>
                 <Profile />
                 ورود | ثبت نام
               </div>
-            ) : (
-              "ورود"
             )}
           </div>
         </div>

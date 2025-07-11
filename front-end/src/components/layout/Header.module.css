@@ -92,6 +92,59 @@
   align-items: center;
   padding-top: 1.5rem;
 }
+.userLoggedContainer {
+  position: relative;
+}
+
+.userLogged {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  font-weight: 600;
+  gap: 0.1rem;
+  font-size: 1rem;
+}
+
+.subMenu {
+  position: absolute;
+  top: 100%;
+  left: -1.5rem;
+  background-color: var(--baseColor);
+  width: 15rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.subMenuItem {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.2rem;
+  color: var(--textColor);
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.subMenuItem:first-child {
+  background-color: #f4f4f4;
+}
+
+.subMenuItem:first-child svg {
+  background-color: #d9d9d9;
+	padding: 0.1rem;
+	border-radius: 100%;
+}
+
+.rotateUp {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
 
 /* Responsive - Mobile First */
 
@@ -114,6 +167,12 @@
     justify-content: center;
     align-items: center;
     margin-left: 2rem;
+    width: 7rem;
+    margin-left: 1rem;
+  }
+
+  .desktopMenuLogo img {
+    width: 100%;
   }
 
   .desktopMenuLogo svg {
@@ -131,8 +190,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 0.6rem;
     list-style: none;
+  }
+
+  .desktopHeaderRight ul li {
+    font-size: 1rem;
+    flex-shrink: 0;
   }
 
   .desktopHeaderRight ul li:hover {
@@ -152,15 +216,10 @@
     cursor: pointer;
   }
 
-  .desktopHeaderLeft:hover {
-    color: var(--baseColor);
-    background-color: var(--primary);
-    transition: all 0.3s ease-in;
-  }
-
-  .desktopHeaderLeft:hover path {
-    fill: var(--baseColor);
-    transition: fill 0.3s ease-in;
+  .logInContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

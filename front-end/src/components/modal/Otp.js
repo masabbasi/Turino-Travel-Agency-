@@ -124,7 +124,6 @@ function Otp({ setModal, otpCode, setOtpCode }) {
             if (response.accessToken) {
               setCookies(response);
               queryClient.invalidateQueries({ queryKey: ["user"] });
-
               setModal(0);
               setOtpCode({ mobile: "", code: "" });
             } else {
@@ -149,7 +148,7 @@ function Otp({ setModal, otpCode, setOtpCode }) {
                       ref={inputRefs[index]}
                       onInput={(e) => {
                         e.target.value = e.target.value.replace(/[^0-9]/g, "");
-                        if (e.target.value && index < 4) {
+                        if (e.target.value && index < 5) {
                           inputRefs[index + 1].current.focus();
                         }
                       }}

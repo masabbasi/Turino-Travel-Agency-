@@ -20,3 +20,10 @@ export const getCookies = () => {
     return cookies;
   }
 };
+
+export const clearCookies = () => {
+  if (typeof window === "undefined") return;
+
+  document.cookie = `accessToken=; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  document.cookie = `refreshToken=; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+};
