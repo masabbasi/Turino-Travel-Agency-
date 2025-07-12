@@ -14,7 +14,7 @@ import HamburgerMenu from "@icon/HamburgerMenu";
 import Profile from "@icon/Profile";
 import ArrowDown from "@icon/ArrowDown";
 
-import styles from "@module/MobilHeader.module.css";
+import styles from "@module/MobileHeader.module.css";
 
 function MobileHeader({
   toggelHamburger,
