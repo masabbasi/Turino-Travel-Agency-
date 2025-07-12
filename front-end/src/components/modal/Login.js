@@ -32,7 +32,6 @@ function Login({ setModal, setOtpCode }) {
 
             if (response.code) {
               setOtpCode({ mobile: values.mobile, code: response.code });
-              console.log(response.code);
               setModal(2);
               setSubmitting(false);
             }

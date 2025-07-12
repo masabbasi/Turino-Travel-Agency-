@@ -72,11 +72,12 @@
   border: 0.1rem solid red !important;
 }
 
-/* .error {
+.error {
   color: red;
   margin: 0.5rem 0;
   height: 1.5rem;
-} */
+	margin: 0.5rem;
+}
 
 .timer {
   display: flex;

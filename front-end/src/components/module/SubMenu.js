@@ -12,8 +12,10 @@ function SubMenu({ data }) {
 
   const exitHandler = () => {
     clearCookies();
-    queryClient.invalidateQueries({ queryKey: ["user"] });
+    queryClient.removeQueries({ queryKey: ["user"] });
+    queryClient.setQueryData(["user"], null);
   };
+
   return (
     <div className={styles.subMenu}>
       <div className={styles.subMenuItem}>

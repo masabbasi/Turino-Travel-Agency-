@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { Formik, Form } from "formik";
 import { useQueryClient } from "@tanstack/react-query";
@@ -16,6 +16,7 @@ import ArrowLeft from "@icon/ArrowLeft";
 import styles from "@modal/Otp.module.css";
 
 function Otp({ setModal, otpCode, setOtpCode }) {
+  const [error, setError] = useState(false);
   const queryClient = useQueryClient();
 
   const inputRefs = [
@@ -53,22 +54,23 @@ function Otp({ setModal, otpCode, setOtpCode }) {
           validateOnChange={true}
           validateOnBlur={true}
           onSubmit={async (values, { setSubmitting }) => {
+            setError(false);
             const createOtpCode = Object.values(values).join("");
-
-            setOtpCode({
-              ...otpCode,
-              code: createOtpCode,
-            });
-
-            const response = await api.post("/auth/check-otp", otpCode);
-
-            if (response.accessToken) {
-              setCookies(response);
-              queryClient.invalidateQueries({ queryKey: ["user"] });
-              setModal(0);
-              setOtpCode({ mobile: "", code: "" });
+            if (otpCode.code === createOtpCode) {
+              const response = await api.post("/auth/check-otp", {
+                mobile: otpCode.mobile,
+                code: otpCode.code,
+              });
+              if (response.accessToken) {
+                setCookies(response);
+                queryClient.invalidateQueries({ queryKey: ["user"] });
+                setModal(0);
+                setOtpCode({ mobile: "", code: "" });
+              } else {
+                setTimer(30);
+              }
             } else {
-              setTimer(30);
+              setError(true);
             }
 
             setSubmitting(false);
@@ -113,9 +115,13 @@ function Otp({ setModal, otpCode, setOtpCode }) {
                     />
                   ))}
                 </div>
-                {/* <div className={styles.error}>
-                  {!!errors && "لطفا کد تائید را درست وارد کنید!"}
-                </div> */}
+                {error && (
+                  <>
+                    <div className={styles.error}>
+                      لطفا کد درست را وارد کنید.
+                    </div>
+                  </>
+                )}
               </div>
               <div className={styles.timer}>
                 <Timer otpCode={otpCode} setOtpCode={setOtpCode} />
