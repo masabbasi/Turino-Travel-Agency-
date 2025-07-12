@@ -1,7 +1,8 @@
 "use client";
 
-import api from "@services/config";
 import { useEffect, useState } from "react";
+
+import api from "@services/config";
 
 function Timer({otpCode,setOtpCode}) {
   const [timer, setTimer] = useState(5);

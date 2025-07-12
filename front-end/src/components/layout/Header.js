@@ -2,28 +2,15 @@
 
 import { useState } from "react";
 
-import Link from "next/link";
-
 import { useUser } from "@hooks/useUser";
+
+import MobileHeader from "@module/MobileHeader";
+import DesktopHeader from "@module/DesktopHeader";
 
 import Login from "@modal/Login";
 import Otp from "@modal/Otp";
 
-// import AirplaneSquare from "@icon/AirplaneSquare";
-// import Call from "@icon/Call";
-// import Home from "@icon/Home";
-// import Logo from "@icon/Logo";
-// import SignIn from "@icon/SignIn";
-// import VolumeLow from "@icon/VolumeLow";
-// import HamburgerMenu from "@icon/HamburgerMenu";
-import Profile from "@icon/Profile";
-import ArrowDown from "@icon/ArrowDown";
-
-import SubMenu from "@module/SubMenu";
-
 import styles from "@layout/Header.module.css";
-import MobileHeader from "@module/MobileHeader";
-import DesktopHeader from "@module/DesktopHeader";
 
 function Header() {
   const { data } = useUser();

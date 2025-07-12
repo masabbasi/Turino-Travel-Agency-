@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+
 import styles from "@app/not-found.module.css";
 
 function notFound() {

@@ -4,7 +4,7 @@ import Layout from "@layout/Layout";
 
 export const metadata = {
   title: "Tourino",
-  description: "Masoud Abbasi",
+  description: "Tourino Website Descriptions",
 };
 
 export default function RootLayout({ children }) {

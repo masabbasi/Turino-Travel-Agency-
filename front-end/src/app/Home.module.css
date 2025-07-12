@@ -1,0 +1,45 @@
+.topImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topImage img {
+  width: 100vw;
+  height: 20rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Responsive - Mobile First */
+
+/* Small Device Size */
+@media screen and (min-width: 450px) {
+}
+
+/* Mobile Size */
+@media screen and (min-width: 576px) {
+  .topImage img {
+    height: 25rem;
+  }
+}
+
+/* Tablet Size */
+@media screen and (min-width: 768px) {
+  .topImage img {
+    height: 30rem;
+  }
+}
+
+/* Laptop Size */
+@media screen and (min-width: 992px) {
+  .topImage img {
+    height: 35rem;
+  }
+}
+
+/* Desktop Size */
+@media screen and (min-width: 1200px) {
+}

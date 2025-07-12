@@ -1,6 +1,9 @@
-import styles from "@layout/Footer.module.css";
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+
+import styles from "@layout/Footer.module.css";
 
 function Footer() {
   return (
