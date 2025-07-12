@@ -1,0 +1,144 @@
+.footerContainer {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 3rem 0rem 0.5rem;
+}
+
+.footerContainarDetail {
+  border-top: 0.1rem dashed #00000040;
+  border-bottom: 0.1rem solid #00000040;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.footerRight {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.footerRightTorino,
+.footerRightServices {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.footerRightTorino p,
+.footerRightServices p {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.footerRightTorino ul,
+.footerRightServices ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.footerLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.footerLeftlogo {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.footerLeftlogo img {
+  height: 3rem;
+}
+
+.footerLeftOtherSite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 50%;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.footerLeftOtherSite img {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.footerCopyRight {
+  text-align: center;
+}
+
+/* Responsive - Mobile First */
+
+/* Small Device Size */
+@media screen and (min-width: 450px) {
+}
+
+/* Mobile Size */
+@media screen and (min-width: 576px) {
+  .footerRightTorino ul li a,
+  .footerRightServices ul li a,
+  .footerLeftOtherSite img {
+    cursor: pointer;
+  }
+  .footerContainarDetail {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+
+  .footerRight {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  .footerRightTorino p,
+  .footerRightServices p {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .footerLeft {
+    flex-direction: column-reverse;
+  }
+
+  .footerLeftlogo {
+    width: auto;
+  }
+
+  .footerLeftOtherSite {
+    width: auto;
+  }
+}
+
+/* Tablet Size */
+@media screen and (min-width: 768px) {
+  .footerContainarDetail {
+    justify-content: space-between;
+  }
+}
+
+/* Laptop Size */
+@media screen and (min-width: 992px) {
+}
+
+/* Desktop Size */
+@media screen and (min-width: 1200px) {
+}

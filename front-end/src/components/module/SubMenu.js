@@ -1,4 +1,5 @@
 "use client";
+
 import User from "@icon/User";
 import Account from "@icon/Account";
 import Logout from "@icon/Logout";
@@ -6,14 +7,16 @@ import styles from "@module/SubMenu.module.css";
 import Link from "next/link";
 import { useQueryClient } from "@tanstack/react-query";
 import { clearCookies } from "@utils/cookies";
+// import { useRouter } from "next/router";
 
 function SubMenu({ data }) {
   const queryClient = useQueryClient();
+  // const router = useRouter();
 
   const exitHandler = () => {
     clearCookies();
     queryClient.removeQueries({ queryKey: ["user"] });
-    queryClient.setQueryData(["user"], null);
+    // router.refresh();
   };
 
   return (
