@@ -1,0 +1,181 @@
+.topText {
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.topText span:first-child {
+  color: var(--primary);
+}
+
+.tours {
+}
+
+.tours h2 {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.toursContainer {
+}
+
+.phoneOrder {
+  border: 0.1rem solid #00000040;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin: 10rem 0;
+}
+
+.phoneOrderTop {
+  background-color: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  height: 12.8rem;
+  border-radius: 1rem 1rem 0 0;
+  padding: 1.2rem;
+}
+
+.phoneOrderTopText {
+  font-weight: 800;
+  font-size: 1.3rem;
+  line-height: 3rem;
+}
+
+.phoneOrderTopText p span {
+  color: var(--secondary);
+}
+.phoneOrderTopImg {
+  position: relative;
+}
+
+.phoneOrderTopImg img {
+  width: 19.5rem;
+  height: 15.8rem;
+  position: absolute;
+  bottom: -1.2rem;
+  left: -1rem;
+  margin-right: -1rem;
+}
+
+.phoneOrderButtom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.phoneOrderButtomTel {
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--textColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 0.5rem;
+  padding: 1.2rem;
+}
+
+.phoneOrderButtomMore {
+  font-weight: 500;
+  font-size: 1.4rem;
+  border-radius: 0.9rem;
+  padding: 0.8rem;
+  background-color: var(--secondary);
+  color: var(--baseColor);
+}
+
+/* Responsive - Mobile First */
+
+/* Small Device Size */
+@media screen and (min-width: 450px) {
+  .phoneOrderTopText {
+    font-size: 2.2rem;
+    line-height: 4rem;
+  }
+}
+
+/* Mobile Size */
+@media screen and (min-width: 576px) {
+  .topText {
+    font-size: 2.8rem;
+  }
+
+  .tours h2 {
+    font-size: 3.2rem;
+  }
+}
+
+/* Tablet Size */
+@media screen and (min-width: 768px) {
+  .phoneOrder {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .phoneOrderTop {
+    width: 70%;
+    border-radius: 0 1rem 1rem 0;
+  }
+
+  .phoneOrderTopText {
+    font-size: 2rem;
+  }
+
+  .phoneOrderTopImg img {
+    width: 19.5rem;
+  }
+
+  .phoneOrderButtom {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .phoneOrderButtomTel {
+    font-size: 1.9rem;
+  }
+
+  .phoneOrderButtomMore {
+    font-size: 1.3rem;
+  }
+
+  .phoneOrderButtomMore:hover {
+    background-color: var(--primary);
+    cursor: pointer;
+    transition: color 0.3s ease-in;
+  }
+}
+
+/* Laptop Size */
+@media screen and (min-width: 992px) {
+  .phoneOrderTop {
+    height: 17rem;
+  }
+
+  .phoneOrderTopText {
+    line-height: 5rem;
+  }
+
+  .phoneOrderTopImg img {
+    height: 17rem;
+    left: 2rem;
+  }
+
+  .phoneOrderButtomTel {
+    font-size: 2.8rem;
+  }
+
+  .phoneOrderButtomMore {
+    font-size: 1.6rem;
+  }
+}
+
+/* Desktop Size */
+@media screen and (min-width: 1200px) {
+  .phoneOrder {
+    justify-content: flex-start;
+    gap: 6rem;
+  }
+}
