@@ -1,0 +1,83 @@
+.whyTorinoTop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.whyTorinoTopTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.whyTorinoTopTitleBullet {
+  width: 5rem;
+  height: 5rem;
+  color: var(--baseColor);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #28a745 0%, #10411b 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.whyTorinoTopTitle h2 {
+  font-weight: 800;
+  font-size: 2.4rem;
+}
+
+.whyTorinoTopTitle h2 span {
+  color: var(--primary);
+}
+
+.whyTorinoTopDescription {
+  display: none;
+}
+
+/* Responsive - Mobile First */
+
+/* Small Device Size */
+@media screen and (min-width: 450px) {
+}
+
+/* Mobile Size */
+@media screen and (min-width: 576px) {
+}
+
+/* Tablet Size */
+@media screen and (min-width: 768px) {
+  .whyTorino {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+  }
+  .whyTorinoTopDescription {
+    display: block;
+    font-weight: 400;
+    font-size: 1.6rem;
+    text-align: justify;
+  }
+  .whyTorinoTopDescription p:first-child {
+    font-weight: bold;
+  }
+
+  .whyTorinoButtom {
+    width: 50%;
+  }
+}
+
+/* Laptop Size */
+@media screen and (min-width: 992px) {
+}
+
+/* Desktop Size */
+@media screen and (min-width: 1200px) {
+  .whyTorinoTopTitle h2 {
+		font-size: 3rem;
+	} .whyTorinoTopDescription {
+    font-size: 2rem;
+    line-height: 5rem;
+  }
+}

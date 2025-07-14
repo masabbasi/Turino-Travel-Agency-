@@ -1,5 +1,6 @@
 import PhoneOrder from "@icon/PhoneOrder";
 import Search from "@module/Search";
+import Slider from "@module/Slider";
 import TourCard from "@module/TourCard";
 import styles from "@template/HomePage.module.css";
 import Image from "next/image";
@@ -47,6 +48,7 @@ function HomePage() {
           </div>
         </div>
       </div>
+      <Slider />
     </>
   );
 }
