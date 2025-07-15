@@ -11,6 +11,8 @@ import Calendar from "@icon/Calendar";
 import Bus from "@icon/Bus";
 import Profile2User from "@icon/Profile2User";
 import Security from "@icon/Security";
+import { dateToJalaali } from "@utils/jalaali";
+
 async function TourDetail({ params }) {
   const data = await api.get(`/tour/${params.tourId}`);
 
@@ -24,7 +26,9 @@ async function TourDetail({ params }) {
     origin,
     availableSeats,
   } = data;
-  console.log(data);
+
+	console.log(startDate,endDate);
+
   const { days, nights } = calculateTourDuration(startDate, endDate);
 
   return (
@@ -68,11 +72,10 @@ async function TourDetail({ params }) {
         </div>
         <div className={styles.tourDetailservicesUItem}>
           <div className={styles.tourDetailservicesUItemTitle}>
-            <Calendar />
-            تاریخ رفت
+            <Calendar /> تاریخ رفت
           </div>
           <div className={styles.tourDetailservicesUItemCurrentTitle}>
-           جواب
+            {dateToJalaali(startDate)}
           </div>
         </div>
         <div className={styles.tourDetailservicesUItem}>
@@ -80,14 +83,19 @@ async function TourDetail({ params }) {
             <Calendar />
             تاریخ برگشت
           </div>
-          <div className={styles.tourDetailservicesUItemCurrentTitle}>جواب</div>
+          <div className={styles.tourDetailservicesUItemCurrentTitle}>
+            {" "}
+            {dateToJalaali(endDate)}
+          </div>
         </div>
         <div className={styles.tourDetailservicesUItem}>
           <div className={styles.tourDetailservicesUItemTitle}>
             <Bus />
             حمل و نقل
           </div>
-          <div className={styles.tourDetailservicesUItemCurrentTitle}>اتوبوس</div>
+          <div className={styles.tourDetailservicesUItemCurrentTitle}>
+            اتوبوس
+          </div>
         </div>
         <div className={styles.tourDetailservicesUItem}>
           <div className={styles.tourDetailservicesUItemTitle}>
@@ -103,7 +111,9 @@ async function TourDetail({ params }) {
             <Security />
             بیمه
           </div>
-          <div className={styles.tourDetailservicesUItemCurrentTitle}>بیمه 50 هزار دیناری</div>
+          <div className={styles.tourDetailservicesUItemCurrentTitle}>
+            بیمه 50 هزار دیناری
+          </div>
         </div>
       </div>
       <div className={styles.tourDetailReserve}>
