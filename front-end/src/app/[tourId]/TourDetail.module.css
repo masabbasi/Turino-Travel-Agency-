@@ -1,0 +1,259 @@
+.tourDetailContainer {
+  display: grid;
+  grid-template-columns: 1fr; /* یک ستون */
+  grid-template-rows: auto auto auto auto; /* چهار ردیف */
+  gap: 10px; /* فاصله بین آیتم‌ها */
+}
+
+.tourDetailImg {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.tourDetailImg img {
+  width: 100%;
+  height: 22rem;
+  border-radius: 1.2rem;
+}
+
+.tourDetailTitle {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+
+  flex-direction: column;
+}
+
+.tourDetailTitleMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.tourDetailTitleMain h1 {
+  font-weight: 700;
+  font-size: 2.4rem;
+}
+
+.tourDetailTitleMain p {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.tourTitleDetail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--textColor);
+  margin: 2rem 0;
+}
+
+.tourTitleDetail p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tourDetailservices {
+  grid-column: 1;
+  grid-row: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  overflow-x: scroll;
+  margin: 2rem 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.element::-webkit-scrollbar {
+  display: none;
+}
+
+.tourDetailservicesUItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  gap: 0.5rem;
+}
+
+.tourDetailservicesUItemTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.tourDetailservicesUItemCurrentTitle {
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.tourDetailReserve {
+  grid-column: 1;
+  grid-row: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0 2rem;
+}
+
+.tourDetailReserve button {
+  width: 15rem;
+  height: 4.2rem;
+  outline: none;
+  border: none;
+  color: var(--baseColor);
+  background-color: var(--primary);
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.tourDetailReservePice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.tourDetailReservePice span {
+  color: #009eca;
+  font-weight: 500;
+  font-size: 2.4rem;
+}
+
+/* Responsive - Mobile First */
+
+/* Small Device Size */
+@media screen and (min-width: 450px) {
+}
+
+/* Mobile Size */
+@media screen and (min-width: 576px) {
+  .tourDetailContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    border: 0.1rem solid #00000033;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  .tourDetailImg {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .tourDetailTitle {
+    grid-column: 3/4;
+    grid-row: 1;
+    flex-direction: column;
+  }
+
+  .tourDetailTitleMain {
+    flex-direction: column;
+  }
+
+  .tourDetailTitleMain p {
+    font-size: 1.1rem;
+  }
+
+  .tourTitleDetail {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .tourDetailservices {
+    grid-column: 1/4;
+    grid-row: 2;
+  }
+
+  .tourDetailReserve {
+    grid-column: 1/4;
+    grid-row: 3;
+  }
+}
+
+/* Tablet Size */
+@media screen and (min-width: 768px) {
+}
+
+/* Laptop Size */
+@media screen and (min-width: 992px) {
+  .tourDetailContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .tourDetailImg {
+    grid-column: 1 / 2;
+    grid-row: 1/3;
+    width: 32rem;
+  }
+
+  .tourDetailTitle {
+    grid-column: 2/4;
+    grid-row: 1/2;
+    justify-content: flex-start;
+  }
+
+  .tourDetailTitleMain {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .tourDetailTitleMain p {
+    font-size: 1.2rem;
+  }
+
+  .tourTitleDetail {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+
+  .tourDetailservices {
+    grid-column: 1/4;
+    grid-row: 3/4;
+  }
+
+  .tourDetailReserve {
+    grid-column: 2/4;
+    grid-row: 2/3;
+  }
+
+  .tourDetailservicesUItem {
+    border-left: 0.1rem solid #00000033;
+    padding-left: 3rem;
+  }
+
+  .tourDetailservicesUItem:last-child {
+    border: none;
+    padding-left: 0;
+  }
+
+  .tourDetailReserve button {
+    cursor: pointer;
+  }
+
+  .tourDetailReserve button:hover {
+    background-color: var(--secondary);
+    transition: color 0.3s ease-in;
+  }
+}
+
+/* Desktop Size */
+@media screen and (min-width: 1200px) {
+}
