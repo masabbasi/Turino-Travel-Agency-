@@ -18,6 +18,9 @@
 }
 
 .toursContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
 }
 
 .phoneOrder {
@@ -110,6 +113,11 @@
 
 /* Tablet Size */
 @media screen and (min-width: 768px) {
+  .toursContainer {
+    flex-direction: row;
+		flex-wrap: wrap;
+    gap: 1.5rem;
+  }
   .phoneOrder {
     flex-direction: row;
     justify-content: space-between;

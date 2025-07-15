@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { getCookies } from "@utils/cookies";
 import axios from "axios";
@@ -10,11 +10,29 @@ const api = axios.create({
   },
 });
 
+// api.interceptors.request.use(
+//   (request) => {
+//     const cookies = getCookies();
+//     const accessToken = cookies.accessToken;
+//     request.headers["Authorization"] = `Bearer ${accessToken}`;
+//     return request;
+//   },
+//   (error) => Promise.reject(error)
+// );
+
 api.interceptors.request.use(
   (request) => {
-    const cookies = getCookies();
-    const accessToken = cookies.accessToken;
-    request.headers["Authorization"] = `Bearer ${accessToken}`;
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      try {
+        const cookies = getCookies();
+        const accessToken = cookies.accessToken;
+        if (accessToken) {
+          request.headers["Authorization"] = `Bearer ${accessToken}`;
+        }
+      } catch (error) {
+        console.error('Error handling cookies:', error);
+      }
+    }
     return request;
   },
   (error) => Promise.reject(error)

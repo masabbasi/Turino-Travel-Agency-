@@ -2,11 +2,14 @@ import PhoneOrder from "@icon/PhoneOrder";
 import Search from "@module/Search";
 import Slider from "@module/Slider";
 import TourCard from "@module/TourCard";
+import api from "@services/config";
 import styles from "@template/HomePage.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-function HomePage() {
+async function HomePage() {
+  const data = await api.get("/tour");
+  console.log(data);
   return (
     <>
       <p className={styles.topText}>
@@ -19,7 +22,9 @@ function HomePage() {
       <div className={styles.tours}>
         <h2>همه تور ها</h2>
         <div className={styles.toursContainer}>
-          <TourCard />
+          {data.map((tour) => (
+            <TourCard key={tour.id} {...tour} />
+          ))}
         </div>
       </div>
       <div className={styles.phoneOrder}>
