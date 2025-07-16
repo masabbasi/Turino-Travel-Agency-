@@ -10,15 +10,6 @@ const api = axios.create({
   },
 });
 
-// api.interceptors.request.use(
-//   (request) => {
-//     const cookies = getCookies();
-//     const accessToken = cookies.accessToken;
-//     request.headers["Authorization"] = `Bearer ${accessToken}`;
-//     return request;
-//   },
-//   (error) => Promise.reject(error)
-// );
 
 api.interceptors.request.use(
   (request) => {

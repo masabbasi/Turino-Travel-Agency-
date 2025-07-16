@@ -8,6 +8,7 @@ import { calculateTourDuration } from "@utils/calculateTourDuration";
 import { useParams } from "next/navigation";
 import { reserveValidationSchema } from "@helper/validation";
 import { useRouter } from "next/navigation";
+import { getCookies } from "@utils/cookies";
 
 function reserveTour() {
   const [tour, setTour] = useState({});
@@ -24,6 +25,13 @@ function reserveTour() {
     };
     getData();
   }, []);
+
+  useEffect(() => {
+    const token = getCookies();
+    if (!token) {
+      router.push("/login");
+    }
+  });
 
   return (
     <div className={styles.reserveTourContainer}>

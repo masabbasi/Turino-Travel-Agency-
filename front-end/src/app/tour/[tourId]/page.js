@@ -1,6 +1,6 @@
 import api from "@services/config";
 import Image from "next/image";
-import styles from "@app/[tourId]/TourDetail.module.css";
+import styles from "@app/tour/[tourId]/TourDetail.module.css";
 import { calculateTourDuration } from "@utils/calculateTourDuration";
 import TourDetailUserTick from "@icon/TourDetailUserTick";
 import TourDetailMap from "@icon/TourDetailMap";

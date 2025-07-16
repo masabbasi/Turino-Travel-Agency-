@@ -6,7 +6,7 @@ import ReserveButton from "../element/ReserveButton";
 function TourCard({ id, image, title, price }) {
   return (
     <div className={styles.tourContainer}>
-      <Link href={`/${id}`}>
+      <Link href={`/tour/${id}`}>
         <div className={styles.tourImg}>
           <Image src={`${image}`} width={1000} height={1000} alt={`${title}`} />
         </div>
