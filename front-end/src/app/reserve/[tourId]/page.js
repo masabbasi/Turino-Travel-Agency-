@@ -6,10 +6,14 @@ import { useEffect, useState } from "react";
 import Profile from "@icon/Profile";
 import { calculateTourDuration } from "@utils/calculateTourDuration";
 import { useParams } from "next/navigation";
+import { reserveValidationSchema } from "@helper/validation";
+import { useRouter } from "next/navigation";
 
 function reserveTour() {
   const [tour, setTour] = useState({});
   const params = useParams();
+  const router = useRouter();
+
   useEffect(() => {
     const getData = async () => {
       const { id, title, price, startDate, endDate } = await api.get(
@@ -25,22 +29,20 @@ function reserveTour() {
     <div className={styles.reserveTourContainer}>
       <Formik
         initialValues={{
+          nationalCode: "",
           fullName: "",
           gender: "",
-          nationalCode: "",
           birthDate: "",
         }}
-        // validationSchema={loginValidationSchema}
+        validationSchema={reserveValidationSchema}
         validateOnChange={true}
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting }) => {
-          const response = await api.post("/order", values);
-          console.log(response.code);
-          if (response.code) {
-            // setOtpCode({ mobile: values.mobile, code: response.code });
-            // setModal(2);
-            // setSubmitting(false);
+          const response = await api.post("/order", { ...values });
+          if (response.message) {
+            router.replace(`/success`);
           }
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting, getFieldProps }) => (
@@ -51,39 +53,47 @@ function reserveTour() {
                   <Profile />
                   مشخصات مسافر
                 </div>
-                <input
-                  type="text"
-                  placeholder="نام و نام خانوادگی"
-                  {...getFieldProps("fullName")}
-                />
-                <div className={styles.error}>
-                  <ErrorMessage name="fullName" component="div" />
+                <div className={styles.inputAndErrorContainer}>
+                  <input
+                    type="text"
+                    placeholder="نام و نام خانوادگی"
+                    {...getFieldProps("fullName")}
+                  />
+                  <div className={styles.error}>
+                    <ErrorMessage name="fullName" component="div" />
+                  </div>
                 </div>
-                <select {...getFieldProps("gender")}>
-                  <option value="" label="جنسیت" />
-                  <option value="men">مرد</option>
-                  <option value="women">زن</option>
-                </select>
-                <div className={styles.error}>
-                  <ErrorMessage name="gender" component="div" />
+                <div className={styles.inputAndErrorContainer}>
+                  <select {...getFieldProps("gender")}>
+                    <option value="" label="جنسیت" />
+                    <option value="men">مرد</option>
+                    <option value="women">زن</option>
+                  </select>
+                  <div className={styles.error}>
+                    <ErrorMessage name="gender" component="div" />
+                  </div>
                 </div>
-                <input
-                  type="text"
-                  maxLength={10}
-                  placeholder="کد ملی"
-                  {...getFieldProps("nationalCode")}
-                />
-                <div className={styles.error}>
-                  <ErrorMessage name="nationalCode" component="div" />
+                <div className={styles.inputAndErrorContainer}>
+                  <input
+                    type="text"
+                    maxLength={10}
+                    placeholder="کد ملی"
+                    {...getFieldProps("nationalCode")}
+                  />
+                  <div className={styles.error}>
+                    <ErrorMessage name="nationalCode" component="div" />
+                  </div>
                 </div>
-                <input
-                  className={styles.date}
-                  type="date"
-                  placeholder="تاریخ تولد"
-                  {...getFieldProps("birthDate")}
-                />
-                <div className={styles.error}>
-                  <ErrorMessage name="birthDate" component="div" />
+                <div className={styles.inputAndErrorContainer}>
+                  <input
+                    className={styles.date}
+                    type="date"
+                    placeholder="تاریخ تولد"
+                    {...getFieldProps("birthDate")}
+                  />
+                  <div className={styles.error}>
+                    <ErrorMessage name="birthDate" component="div" />
+                  </div>
                 </div>
               </div>
               <div className={styles.reserveTourDetail}>

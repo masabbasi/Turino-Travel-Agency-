@@ -1,8 +1,8 @@
 .tourDetailContainer {
   display: grid;
-  grid-template-columns: 1fr; /* یک ستون */
-  grid-template-rows: auto auto auto auto; /* چهار ردیف */
-  gap: 10px; /* فاصله بین آیتم‌ها */
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto;
+  gap: 10px;
 }
 
 .tourDetailImg {

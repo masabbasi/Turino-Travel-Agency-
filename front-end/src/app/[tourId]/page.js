@@ -5,13 +5,13 @@ import { calculateTourDuration } from "@utils/calculateTourDuration";
 import TourDetailUserTick from "@icon/TourDetailUserTick";
 import TourDetailMap from "@icon/TourDetailMap";
 import TourDetailMedalStar from "@icon/TourDetailMedalStar";
-import Link from "next/link";
 import Routing from "@icon/Routing";
 import Calendar from "@icon/Calendar";
 import Bus from "@icon/Bus";
 import Profile2User from "@icon/Profile2User";
 import Security from "@icon/Security";
 import { dateToJalaali } from "@utils/jalaali";
+import ReserveButton from "src/components/element/ReserveButton";
 
 async function TourDetail({ params }) {
   const data = await api.get(`/tour/${params.tourId}`);
@@ -26,8 +26,6 @@ async function TourDetail({ params }) {
     origin,
     availableSeats,
   } = data;
-
-	console.log(startDate,endDate);
 
   const { days, nights } = calculateTourDuration(startDate, endDate);
 
@@ -117,9 +115,7 @@ async function TourDetail({ params }) {
         </div>
       </div>
       <div className={styles.tourDetailReserve}>
-        <Link href={`/reserve/${id}`}>
-          <button>رزرو و خرید</button>
-        </Link>
+        <ReserveButton id={id} />
         <div className={styles.tourDetailReservePice}>
           <span>{price}</span>
           تومان

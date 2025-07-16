@@ -9,7 +9,8 @@ import Link from "next/link";
 
 async function HomePage() {
   const data = await api.get("/tour");
-  console.log(data);
+
+
   return (
     <>
       <p className={styles.topText}>

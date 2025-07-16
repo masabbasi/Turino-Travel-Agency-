@@ -1,6 +1,7 @@
 import styles from "@module/TourCard.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import ReserveButton from "../element/ReserveButton";
 
 function TourCard({ id, image, title, price }) {
   return (
@@ -15,9 +16,7 @@ function TourCard({ id, image, title, price }) {
         </div>
       </Link>
       <div className={styles.tourReserve}>
-        <Link href={`/reserve/${id}`}>
-          <button>رزرو</button>
-        </Link>
+        <ReserveButton id={id} />
         <div className={styles.tourReservePrice}>
           <span>{price}</span> تومان
         </div>

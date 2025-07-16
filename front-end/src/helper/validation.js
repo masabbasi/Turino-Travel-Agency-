@@ -1,6 +1,5 @@
 import * as yup from "yup";
 
-
 //Login
 export const loginValidationSchema = yup.object().shape({
   mobile: yup
@@ -46,4 +45,18 @@ export const otpValidationSchema = yup.object().shape({
     .required()
     .length(1)
     .matches(/^[0-9]{1}$/),
+});
+
+//Reserve
+export const reserveValidationSchema = yup.object().shape({
+  fullName: yup
+    .string()
+    .required("نام کامل خود را وارد کنید")
+    .min(6, " باید حداقل 6 حرف باشد"),
+  gender: yup.string().required("جنسیت خود را وارد کنید"),
+  nationalCode: yup
+    .string()
+    .required("کد ملی خود را وارد کنید")
+    .length(10, "کد ملی باید دقیقاً 10 رقم باشد"),
+  birthDate: yup.string().required("تاریخ تولد خود را وارد کنید"),
 });

@@ -1,0 +1,42 @@
+.successContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.successContainer p {
+  width: 20rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+}
+
+.successContainer a {
+  width: 20rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding: 1rem;
+  color: var(--baseColor);
+  background-color: var(--primary);
+  border: none;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+/* Responsive - Mobile First */
+
+/* Tablet Size */
+@media screen and (min-width: 768px) {
+  .successContainer a {
+    cursor: pointer;
+  }
+  .successContainer a:hover {
+    background-color: var(--secondary);
+		transition: all 0.3s ease-in;
+  }
+}
