@@ -35,13 +35,13 @@ function Search() {
     setFormData((prev) => ({ ...prev, date: userDate }));
   }, [userDate]);
 
-  const searchHandler = async () => {
+  const searchHandler = async (e) => {
+    e.preventDefault();
     const res = await api.get(
       `/tour?destinationId=${formData.destination}&originId=${formData.origin}&startDate=${formData.date}`
     );
     console.log(res);
   };
-
 
   return (
     <div className={styles.searchContainer}>

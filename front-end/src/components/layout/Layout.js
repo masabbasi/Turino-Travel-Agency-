@@ -1,27 +1,28 @@
 "use client";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 import Header from "@layout/Header";
 import Footer from "@layout/Footer";
-
+import AuthProvider from "@providers/AuthProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import styles from "@layout/Layout.module.css";
 
 const queryClient = new QueryClient();
 
 function Layout({ children }) {
   return (
-    <div>
-      <div className={styles.container}>
-        <QueryClientProvider client={queryClient}>
-          <Header />
-        </QueryClientProvider>
-      </div>
-      <div className={styles.container}>
-        {children}
-        <Footer />
-      </div>
-    </div>
+    <QueryClientProvider client={queryClient}>
+        <div>
+          <div className={styles.container}>
+            <Header />
+          </div>
+          <div className={styles.container}>
+            {children}
+            <Footer />
+      {/* <AuthProvider>
+      </AuthProvider> */}
+          </div>
+        </div>
+    </QueryClientProvider>
   );
 }
 

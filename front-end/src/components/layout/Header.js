@@ -60,6 +60,7 @@ function Header() {
             toggleSubMenu={toggleSubMenu}
             showSubMenu={showSubMenu}
             loginHandler={loginHandler}
+            setShowSubMenu={setShowSubMenu}
             data={data}
           />
         </div>

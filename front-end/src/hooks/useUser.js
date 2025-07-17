@@ -10,7 +10,7 @@ export function useUser() {
     return response;
   };
 
-  const { data, isSuccess, isLoading } = useQuery({
+  const { data, isSuccess, isLoading, isError } = useQuery({
     queryKey: ["user"],
     queryFn: fetchUser,
   });
@@ -19,5 +19,6 @@ export function useUser() {
     data,
     isSuccess,
     isLoading,
+    isError,
   };
 }

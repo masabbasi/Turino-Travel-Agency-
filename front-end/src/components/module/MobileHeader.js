@@ -22,6 +22,7 @@ function MobileHeader({
   loginHandler,
   toggleSubMenu,
   showSubMenu,
+  setShowSubMenu,
   data,
 }) {
   return (
@@ -66,7 +67,9 @@ function MobileHeader({
               {data?.mobile}
               <ArrowDown className={showSubMenu ? styles.rotateUp : ""} />
             </div>
-            {showSubMenu && <SubMenu data={data} />}
+            {showSubMenu && (
+              <SubMenu data={data} setShowSubMenu={setShowSubMenu} />
+            )}
           </>
         ) : (
           <div onClick={loginHandler}>

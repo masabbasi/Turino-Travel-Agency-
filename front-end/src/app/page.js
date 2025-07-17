@@ -3,7 +3,6 @@ import Image from "next/image";
 import HomePage from "@template/HomePage";
 
 import styles from "@app/Home.module.css";
-
 export default function Home() {
   return (
     <>

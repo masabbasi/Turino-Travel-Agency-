@@ -1,11 +1,29 @@
 "use client";
-import { getCookies } from "@utils/cookies.js";
+import { useUser } from "@hooks/useUser";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { PuffLoader } from "react-spinners";
 
-function AuthProvider({ children }) {
-  const token = getCookies();
-  if (!token) return <p>عدم دسترسی</p>;
+const AuthProvider = ({ children }) => {
+  const router = useRouter();
+  console.log("Hi");
+  const { data, isLoading, isError } = useUser();
+  console.log(data, isLoading, isError);
 
-  return children;
-}
+  useEffect(() => {
+    if (!isLoading && (!data || isError)) {
+      router.replace("/");
+    }
+  }, [isLoading, data]);
+
+  if (isLoading) {
+    return (
+      <p>
+        <PuffLoader color="#28a745" />
+      </p>
+    );
+  }
+  return <>{children}Hi</>;
+};
 
 export default AuthProvider;

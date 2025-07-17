@@ -10,10 +10,9 @@ const api = axios.create({
   },
 });
 
-
 api.interceptors.request.use(
   (request) => {
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    if (typeof window !== "undefined" && typeof document !== "undefined") {
       try {
         const cookies = getCookies();
         const accessToken = cookies.accessToken;
@@ -21,7 +20,7 @@ api.interceptors.request.use(
           request.headers["Authorization"] = `Bearer ${accessToken}`;
         }
       } catch (error) {
-        console.error('Error handling cookies:', error);
+        console.error("Error handling cookies:", error);
       }
     }
     return request;

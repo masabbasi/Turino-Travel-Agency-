@@ -9,7 +9,7 @@ import Profile from "@icon/Profile";
 
 import styles from "@module/DesktopHeader.module.css";
 
-function DesktopHeader({ toggleSubMenu, showSubMenu, loginHandler, data }) {
+function DesktopHeader({ toggleSubMenu, showSubMenu, loginHandler, data,setShowSubMenu }) {
   return (
     <>
       {" "}
@@ -41,7 +41,7 @@ function DesktopHeader({ toggleSubMenu, showSubMenu, loginHandler, data }) {
               {data?.mobile}
               <ArrowDown className={showSubMenu ? styles.rotateUp : ""} />
             </div>
-            {showSubMenu && <SubMenu data={data} />}
+            {showSubMenu && <SubMenu data={data} setShowSubMenu={setShowSubMenu} />}
           </div>
         ) : (
           <div className={styles.logInContainer} onClick={loginHandler}>

@@ -7,6 +7,7 @@ import styles from "@template/HomePage.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
+
 async function HomePage() {
   const data = await api.get("/tour");
 

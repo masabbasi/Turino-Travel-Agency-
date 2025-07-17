@@ -149,6 +149,7 @@
     width: 100%;
   }
 
+
   .inputsContainer input,
   .inputsContainer select {
     width: 100%;
@@ -169,6 +170,11 @@
     justify-content: center;
     align-items: center;
     gap: 0.2rem;
+  }
+
+	
+  .reserveTourDetailTitle h2 {
+    font-size: 1.4rem;
   }
 
   .reserveTourDetail button {

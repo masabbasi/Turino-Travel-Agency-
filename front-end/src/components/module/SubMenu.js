@@ -10,12 +10,9 @@ import Account from "@icon/Account";
 import Logout from "@icon/Logout";
 
 import styles from "@module/SubMenu.module.css";
-// import { useRouter } from "next/router";
 
-function SubMenu({ data }) {
+function SubMenu({ data, setShowSubMenu }) {
   const queryClient = useQueryClient();
-
-  // const router = useRouter();
 
   const exitHandler = () => {
     clearCookies();
@@ -29,7 +26,7 @@ function SubMenu({ data }) {
         <User />
         <span>{data?.mobile}</span>
       </div>
-      <div className={styles.subMenuItem}>
+      <div className={styles.subMenuItem} onClick={() => setShowSubMenu(false)}>
         <Account />
         <Link href="/dashboard">اطلاعات حساب کاربری</Link>
       </div>
