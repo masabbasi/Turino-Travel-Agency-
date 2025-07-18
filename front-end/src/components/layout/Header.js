@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { useUser } from "@hooks/useUser";
+import { useGetUser } from "@hooks/queries";
 
 import MobileHeader from "@module/MobileHeader";
 import DesktopHeader from "@module/DesktopHeader";
@@ -13,7 +13,7 @@ import Otp from "@modal/Otp";
 import styles from "@layout/Header.module.css";
 
 function Header() {
-  const { data } = useUser();
+  const { data } = useGetUser();
 
   const [modal, setModal] = useState(0);
   const [otpCode, setOtpCode] = useState({ mobile: "", code: "" });

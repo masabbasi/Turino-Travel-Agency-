@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 import styles from "@app/not-found.module.css";
+import Link from "next/link";
 
 function notFound() {
   return (
@@ -17,7 +18,9 @@ function notFound() {
       </div>
       <div className={styles.buttonContainer}>
         <p>صفحه مورد نظر یافت نشد!</p>
-        <button>بازگشت به صفحه اصلی</button>
+        <Link href="/">
+          <button>بازگشت به صفحه اصلی</button>
+        </Link>
       </div>
     </div>
   );

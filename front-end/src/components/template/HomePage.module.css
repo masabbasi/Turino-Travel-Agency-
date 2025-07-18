@@ -24,16 +24,16 @@
 }
 
 .notFound {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .notFound p {
-	color: rgb(211, 98, 98);
-	font-weight: 700;
-	font-size: 1.8rem;
-	text-align: center;
+  color: rgb(211, 98, 98);
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
 }
 
 .phoneOrder {
@@ -41,7 +41,7 @@
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  margin: 10rem 0;
+  margin: 6rem 0;
 }
 
 .phoneOrderTop {
@@ -103,6 +103,45 @@
   color: var(--baseColor);
 }
 
+.featuresContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 6rem;
+  padding-bottom: 4rem;
+  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.144);
+}
+
+.featuresItem {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+}
+
+.featuresItem img {
+  width: 6rem;
+  height: 6rem;
+}
+
+.featuresItemDetail {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5;
+}
+
+.featuresItemDetail p {
+  font-size: 1.3;
+  font-weight: 400;
+}
+
+.featuresItemDetail p:first-child {
+  font-size: 1.4;
+  font-weight: 600;
+}
+
 /* Responsive - Mobile First */
 
 /* Small Device Size */
@@ -122,13 +161,21 @@
   .tours h2 {
     font-size: 3.2rem;
   }
+
+  .featuresItem {
+    justify-content: center;
+  }
+
+  .featuresItemDetail {
+    width: calc(80% - 8rem);
+  }
 }
 
 /* Tablet Size */
 @media screen and (min-width: 768px) {
   .toursContainer {
     flex-direction: row;
-		flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 1.5rem;
   }
   .phoneOrder {
@@ -167,6 +214,28 @@
     cursor: pointer;
     transition: color 0.3s ease-in;
   }
+
+  .featuresContainer {
+    flex-direction: row;
+  }
+
+  .featuresItem {
+    justify-content: flex-start;
+  }
+
+  .featuresItemDetail {
+    width: fit-content;
+  }
+
+  .featuresItemDetail p {
+    font-size: 1.4;
+    font-weight: 400;
+  }
+
+  .featuresItemDetail p:first-child {
+    font-size: 1.6;
+    font-weight: 600;
+  }
 }
 
 /* Laptop Size */
@@ -190,6 +259,16 @@
 
   .phoneOrderButtomMore {
     font-size: 1.6rem;
+  }
+
+  .featuresItemDetail p {
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+
+  .featuresItemDetail p:first-child {
+    font-size: 2rem;
+    font-weight: 700;
   }
 }
 

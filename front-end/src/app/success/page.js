@@ -4,8 +4,8 @@ import Link from "next/link";
 function Success() {
   return (
     <div className={styles.successContainer}>
-      <p>خرید موفق بود</p>
-      <Link href="/dashboard">رفتن به داشبورد</Link>
+      <p>خرید با موفقیت انجام شد.</p>
+      <Link href="/profile/my-tours">مشاهده لیست تورهای خریداری شده!</Link>
     </div>
   );
 }

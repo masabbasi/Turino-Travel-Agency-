@@ -2,12 +2,11 @@
 import DatePicker from "react-multi-date-picker";
 import jalali from "react-date-object/calendars/jalali";
 import persian_fa from "react-date-object/locales/persian_fa";
-import { useEffect, useState } from "react";
-import { JalaaliToDate, dateToJalaali, test } from "@utils/jalaali";
+import { useState } from "react";
+import { JalaaliToDate } from "@utils/jalaali";
 
-function UserDatePicker({ userDate, setUserDate }) {
+function UserDatePicker({ setUserDate }) {
   const [selectedDates, setSelectedDates] = useState(null);
-  const [testDates, setTestDates] = useState(null);
 
   const changeHandler = (date) => {
     setSelectedDates(date);
@@ -37,7 +36,6 @@ function UserDatePicker({ userDate, setUserDate }) {
         calendar={jalali}
         locale={persian_fa}
         format="DD/MM/YYYY"
-        selected={testDates}
       />
     </>
   );

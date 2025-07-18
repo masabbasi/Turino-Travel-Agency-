@@ -27,7 +27,7 @@ function Search() {
   const [formData, setFormData] = useState({
     destination: "",
     origin: "",
-    date: null,
+    startDate: null,
   });
 
   const selectChangeHandler = (e) => {
@@ -36,7 +36,7 @@ function Search() {
   };
 
   useEffect(() => {
-    setFormData((prev) => ({ ...prev, date: userDate }));
+    setFormData((prev) => ({ ...prev, startDate: userDate }));
   }, [userDate]);
 
   const searchHandler = async (e) => {
@@ -48,16 +48,16 @@ function Search() {
   useEffect(() => {
     const origin = searchParams.get("origin") || "";
     const destination = searchParams.get("destination") || "";
-    const date = searchParams.get("date") || null;
+    const startDate = searchParams.get("startDate") || null;
 
     setFormData({
       origin,
       destination,
-      date,
+      startDate,
     });
 
-    if (date) {
-      setUserDate(date);
+    if (formData.startDate) {
+      setUserDate(formData.startDate);
     }
   }, [searchParams]);
 

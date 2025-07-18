@@ -38,6 +38,7 @@ function Slider() {
               pagination={true}
               mousewheel={true}
               keyboard={true}
+              loop={true}
               modules={[Navigation, Pagination, Mousewheel, Keyboard]}
               className="mySwiper"
             >

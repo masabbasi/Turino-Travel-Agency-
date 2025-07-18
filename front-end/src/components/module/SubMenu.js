@@ -28,7 +28,7 @@ function SubMenu({ data, setShowSubMenu }) {
       </div>
       <div className={styles.subMenuItem} onClick={() => setShowSubMenu(false)}>
         <Account />
-        <Link href="/dashboard">اطلاعات حساب کاربری</Link>
+        <Link href="/profile">اطلاعات حساب کاربری</Link>
       </div>
       <div className={styles.subMenuItem} onClick={exitHandler}>
         <Logout />

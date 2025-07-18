@@ -12,6 +12,8 @@ import Profile2User from "@icon/Profile2User";
 import Security from "@icon/Security";
 import { dateToJalaali } from "@utils/jalaali";
 import ReserveButton from "src/components/element/ReserveButton";
+import { tourNameFromEnToFa } from "@helper/tourNameFromEnToFa";
+import { tourFleetVehicleFromEnToFa } from "@helper/tourFleetVehicleFromEnToFa";
 
 async function TourDetail({ params }) {
   const data = await api.get(`/tour/${params.tourId}`);
@@ -25,6 +27,7 @@ async function TourDetail({ params }) {
     price,
     origin,
     availableSeats,
+    fleetVehicle,
   } = data;
 
   const { days, nights } = calculateTourDuration(startDate, endDate);
@@ -65,7 +68,7 @@ async function TourDetail({ params }) {
             مبدا
           </div>
           <div className={styles.tourDetailservicesUItemCurrentTitle}>
-            {origin.name}
+            {tourNameFromEnToFa(origin.id)}
           </div>
         </div>
         <div className={styles.tourDetailservicesUItem}>
@@ -82,7 +85,6 @@ async function TourDetail({ params }) {
             تاریخ برگشت
           </div>
           <div className={styles.tourDetailservicesUItemCurrentTitle}>
-            {" "}
             {dateToJalaali(endDate)}
           </div>
         </div>
@@ -92,7 +94,7 @@ async function TourDetail({ params }) {
             حمل و نقل
           </div>
           <div className={styles.tourDetailservicesUItemCurrentTitle}>
-            اتوبوس
+            {tourFleetVehicleFromEnToFa(fleetVehicle)}
           </div>
         </div>
         <div className={styles.tourDetailservicesUItem}>

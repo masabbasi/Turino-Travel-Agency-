@@ -4,12 +4,11 @@
   align-items: center;
   flex-direction: column;
   gap: 2rem;
-  margin-top: 5rem;
+  margin-top: 4rem;
   width: 100%;
 }
 
 .successContainer p {
-  width: 20rem;
   font-size: 2rem;
   font-weight: 600;
   color: var(--primary);
@@ -17,7 +16,6 @@
 }
 
 .successContainer a {
-  width: 20rem;
   font-size: 1.5rem;
   font-weight: 400;
   padding: 1rem;
@@ -37,6 +35,6 @@
   }
   .successContainer a:hover {
     background-color: var(--secondary);
-		transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
   }
 }

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ReserveButton from "../element/ReserveButton";
 
-function TourCard({ id, image, title, price }) {
+function TourCard({ id, image, title, price, options }) {
   return (
     <div className={styles.tourContainer}>
       <Link href={`/tour/${id}`}>
@@ -12,7 +12,13 @@ function TourCard({ id, image, title, price }) {
         </div>
         <div className={styles.tourDetail}>
           <h3>{title}</h3>
-          <p>بیه توضیحات...</p>
+          <p className={styles.options}>
+            {options.map((item, index) => (
+              <span key={index}>
+                <span>{item} </span>
+              </span>
+            ))}
+          </p>
         </div>
       </Link>
       <div className={styles.tourReserve}>

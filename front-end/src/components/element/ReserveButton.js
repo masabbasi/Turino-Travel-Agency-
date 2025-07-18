@@ -1,18 +1,20 @@
 "use client";
-import { useUser } from "@hooks/useUser";
+import { useGetUser } from "@hooks/queries";
 import api from "@services/config";
 import { useState } from "react";
 import { PropagateLoader } from "react-spinners";
 import toast, { Toaster } from "react-hot-toast";
 
 function ReserveButton({ id }) {
-  const { data, isLoading } = useUser();
+  const { data, isLoading } = useGetUser();
   const [disabled, setDisabled] = useState(false);
   const reserveButtonHandler = async () => {
     setDisabled(true);
     if (data) {
       const basket = await api.put(`/basket/${id}`);
-      toast.success("تور به سبد خرید اضافه شد!");
+      toast.success(`${basket.message}`, {
+				duration: 3000,
+			});
       window.location.replace(`/reserve/${id}`);
       setDisabled(false);
     } else {

@@ -1,0 +1,18 @@
+.toursContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 15rem;
+
+  width: 100%;
+}
+
+.noTransactions {
+  color: white;
+  font-size: 1.3rem;
+  background-color: rgb(175, 93, 93);
+  border-radius: 1rem;
+  padding: 1rem;
+}
