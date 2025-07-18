@@ -10,11 +10,13 @@ import { reserveValidationSchema } from "@helper/validation";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import { PropagateLoader } from "react-spinners";
+import { useGetUserBasket } from "@hooks/queries";
 
 function reserveTour() {
   const [tour, setTour] = useState({});
   const params = useParams();
   const router = useRouter();
+  const { data } = useGetUserBasket();
 
   useEffect(() => {
     const getData = async () => {
@@ -25,7 +27,7 @@ function reserveTour() {
       setTour({ id, title, price, days, nights });
     };
     getData();
-  }, []);
+  }, [data]);
 
   return (
     <div className={styles.reserveTourContainer}>
@@ -40,11 +42,15 @@ function reserveTour() {
         validateOnChange={true}
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting }) => {
+          if (!data) {
+            toast.error("توری در سبد خرید شما وجود ندارد!");
+            setSubmitting(false);
+            return;
+          }
           const response = await api.post("/order", { ...values });
           if (response.message) {
             router.replace(`/success`);
           } else {
-            toast.error("دوباره امتحان کنید!");
             setSubmitting(false);
           }
         }}

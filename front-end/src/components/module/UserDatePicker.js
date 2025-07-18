@@ -14,6 +14,7 @@ function UserDatePicker({ setUserDate }) {
       const { day, month, year } = date;
       const convertedDate = JalaaliToDate(day + 1, month.number, year);
       setUserDate(convertedDate);
+			console.log(convertedDate);
     }
   };
 

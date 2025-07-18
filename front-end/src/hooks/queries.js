@@ -20,4 +20,14 @@ function useGetUserTours() {
   return useQuery({ queryFn, queryKey });
 }
 
-export { useGetUser, useGetUserTransactions, useGetUserTours };
+function useGetUserBasket() {
+  const queryFn = () => api.get("/basket");
+  const queryKey = ["user-basket"];
+  return useQuery({ queryFn, queryKey });
+}
+export {
+  useGetUser,
+  useGetUserTransactions,
+  useGetUserTours,
+  useGetUserBasket,
+};

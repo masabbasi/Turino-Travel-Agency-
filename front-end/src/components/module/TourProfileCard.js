@@ -1,6 +1,7 @@
 "use client";
 import { checkTourStatus } from "@helper/checkTourStatus";
 import { tourNameFromEnToFa } from "@helper/tourNameFromEnToFa";
+import Bus from "@icon/Bus";
 import SunFog from "@icon/SunFog";
 import styles from "@module/TourProfileCard.module.css";
 import { dateToJalaali } from "@utils/jalaali";
@@ -27,7 +28,9 @@ function TourProfileCard({
           <SunFog />
           {title}
         </div>
-        <div className={styles.headerFleetVehicle}>سفر با {fleetVehicle}</div>
+        <div className={styles.headerFleetVehicle}>
+				<Bus />
+					سفر با {fleetVehicle}</div>
       </div>
       <div className={styles.body}>
         <div className={styles.bodyGo}>
