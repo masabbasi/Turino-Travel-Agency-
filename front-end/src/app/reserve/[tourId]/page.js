@@ -9,6 +9,7 @@ import { useParams } from "next/navigation";
 import { reserveValidationSchema } from "@helper/validation";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import { PropagateLoader } from "react-spinners";
 
 function reserveTour() {
   const [tour, setTour] = useState({});
@@ -40,7 +41,6 @@ function reserveTour() {
         validateOnBlur={true}
         onSubmit={async (values, { setSubmitting }) => {
           const response = await api.post("/order", { ...values });
-          console.log(response);
           if (response.message) {
             router.replace(`/success`);
           } else {
@@ -135,7 +135,16 @@ function reserveTour() {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  ثبت و خرید نهایی
+                  {" "}
+                  {isSubmitting ? (
+                    <PropagateLoader
+                      color="#FFFFFF"
+                      cssOverride={{}}
+                      size={3}
+                    />
+                  ) : (
+                    "ثبت و خرید نهایی"
+                  )}
                 </button>
               </div>
             </div>

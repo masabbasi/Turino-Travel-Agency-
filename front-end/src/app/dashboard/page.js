@@ -1,8 +1,11 @@
 import DashboardLayout from "./DashboardLayout";
 
 function page() {
-  // <DashboardLayout />;
-	<>hI</>
+  return (
+    <>
+      <DashboardLayout />;
+    </>
+  );
 }
 
 export default page;

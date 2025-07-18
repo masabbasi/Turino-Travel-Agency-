@@ -3,7 +3,8 @@ import Image from "next/image";
 import HomePage from "@template/HomePage";
 
 import styles from "@app/Home.module.css";
-export default function Home() {
+export default async function Home(props) {
+  const searchParams = await props.searchParams;
   return (
     <>
       <div className={styles.topImage}>
@@ -14,7 +15,7 @@ export default function Home() {
           alt="Header Picture"
         />
       </div>
-      <HomePage />
+      <HomePage searchParams={searchParams} />
     </>
   );
 }

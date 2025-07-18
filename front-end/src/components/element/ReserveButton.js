@@ -1,7 +1,6 @@
 "use client";
 import { useUser } from "@hooks/useUser";
 import api from "@services/config";
-import { redirect } from "next/navigation";
 import { useState } from "react";
 import { PropagateLoader } from "react-spinners";
 import toast, { Toaster } from "react-hot-toast";

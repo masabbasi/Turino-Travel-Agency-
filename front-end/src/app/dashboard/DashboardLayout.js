@@ -1,12 +1,7 @@
-import AuthProvider from "@providers/AuthProvider";
 import Dashboard from "@template/Dashboard";
 
 function DashboardLayout() {
-  return (
-    <AuthProvider>
-      <Dashboard />
-    </AuthProvider>
-  );
+  return <Dashboard />;
 }
 
 export default DashboardLayout;

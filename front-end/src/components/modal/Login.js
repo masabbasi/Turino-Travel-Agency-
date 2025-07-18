@@ -8,6 +8,7 @@ import { loginValidationSchema } from "@helper/validation";
 import Close from "@icon/Close";
 
 import styles from "@modal/Login.module.css";
+import toast, { Toaster } from "react-hot-toast";
 
 function Login({ setModal, setOtpCode }) {
   const closeHandler = () => {
@@ -34,6 +35,9 @@ function Login({ setModal, setOtpCode }) {
               setOtpCode({ mobile: values.mobile, code: response.code });
               setModal(2);
               setSubmitting(false);
+              toast.success(`کد تائید: ${response.code}`, {
+                duration: 5000,
+              });
             }
           }}
         >
@@ -66,6 +70,7 @@ function Login({ setModal, setOtpCode }) {
             </Form>
           )}
         </Formik>
+        <Toaster position="top-center" />
       </div>
     </>
   );

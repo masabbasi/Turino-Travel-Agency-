@@ -23,6 +23,19 @@
   gap: 2.4rem;
 }
 
+.notFound {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.notFound p {
+	color: rgb(211, 98, 98);
+	font-weight: 700;
+	font-size: 1.8rem;
+	text-align: center;
+}
+
 .phoneOrder {
   border: 0.1rem solid #00000040;
   border-radius: 1rem;

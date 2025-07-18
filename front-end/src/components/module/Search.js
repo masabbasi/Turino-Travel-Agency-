@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import styles from "./Search.module.css";
 import UserDatePicker from "./UserDatePicker";
-import api from "@services/config";
+import { buildQueryString } from "@helper/buildQueryString";
+import { useSearchParams, useRouter } from "next/navigation";
 
 const cities = [
   { label: "تهران", value: "1" },
@@ -19,6 +20,10 @@ const cities = [
 function Search() {
   const [userDate, setUserDate] = useState(null);
 
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+
   const [formData, setFormData] = useState({
     destination: "",
     origin: "",
@@ -28,7 +33,6 @@ function Search() {
   const selectChangeHandler = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    console.log(formData);
   };
 
   useEffect(() => {
@@ -37,11 +41,25 @@ function Search() {
 
   const searchHandler = async (e) => {
     e.preventDefault();
-    const res = await api.get(
-      `/tour?destinationId=${formData.destination}&originId=${formData.origin}&startDate=${formData.date}`
-    );
-    console.log(res);
+    const queryString = buildQueryString({ ...formData });
+    router.push(`${queryString}`);
   };
+
+  useEffect(() => {
+    const origin = searchParams.get("origin") || "";
+    const destination = searchParams.get("destination") || "";
+    const date = searchParams.get("date") || null;
+
+    setFormData({
+      origin,
+      destination,
+      date,
+    });
+
+    if (date) {
+      setUserDate(date);
+    }
+  }, [searchParams]);
 
   return (
     <div className={styles.searchContainer}>
@@ -81,7 +99,7 @@ function Search() {
           </select>
         </div>
         <div className={styles.searchDate}>
-          <UserDatePicker setUserDate={setUserDate} />
+          <UserDatePicker userDate={userDate} setUserDate={setUserDate} />
         </div>
         <div className={styles.searchButton}>
           <button onClick={searchHandler}>جستجو</button>

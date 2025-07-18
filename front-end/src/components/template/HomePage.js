@@ -7,10 +7,22 @@ import styles from "@template/HomePage.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
+async function HomePage({ searchParams }) {
+  let tours = [];
+  const { origin, destination, date } = searchParams;
+  console.log("searchParams", searchParams);
 
-async function HomePage() {
-  const data = await api.get("/tour");
-
+  if (!!origin || !!destination || !!date) {
+    const params = [];
+    if (destination) params.push(`destinationId=${destination}`);
+    if (origin) params.push(`originId=${origin}`);
+    if (date) params.push(`date=${date}`);
+    console.log(date);
+    const url = `/tour${params.length ? `?${params.join("&")}` : ""}`;
+    tours = await api.get(url);
+  } else {
+    tours = await api.get("/tour");
+  }
 
   return (
     <>
@@ -24,9 +36,17 @@ async function HomePage() {
       <div className={styles.tours}>
         <h2>همه تور ها</h2>
         <div className={styles.toursContainer}>
-          {data.map((tour) => (
-            <TourCard key={tour.id} {...tour} />
-          ))}
+          {tours.length ? (
+            <>
+              {tours.map((tour) => (
+                <TourCard key={tour.id} {...tour} />
+              ))}
+            </>
+          ) : (
+            <div className={styles.notFound}>
+              <p>توری با نیاز شما یافت نشد!</p>
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.phoneOrder}>

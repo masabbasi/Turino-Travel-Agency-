@@ -81,8 +81,6 @@ function Otp({ setModal, otpCode, setOtpCode }) {
               <div className={styles.inputContainer}>
                 <div className={styles.label}>
                   {`کد تائید به شماره ${otpCode.mobile} ارسال شد.`}
-                  <br />
-                  {`کد تائید: ${otpCode.code}`}
                 </div>
                 <div className={styles.inputsContainer}>
                   {[1, 2, 3, 4, 5, 6].map((num, index) => (
