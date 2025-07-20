@@ -11,6 +11,7 @@ import Login from "@modal/Login";
 import Otp from "@modal/Otp";
 
 import styles from "@layout/Header.module.css";
+import { Toaster } from "react-hot-toast";
 
 function Header() {
   const { data } = useGetUser();

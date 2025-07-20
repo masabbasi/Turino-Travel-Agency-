@@ -70,7 +70,6 @@ function Login({ setModal, setOtpCode }) {
             </Form>
           )}
         </Formik>
-        <Toaster position="top-center" />
       </div>
     </>
   );

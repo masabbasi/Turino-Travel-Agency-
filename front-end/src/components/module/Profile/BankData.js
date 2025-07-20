@@ -2,10 +2,10 @@
 import { BankDataValidationSchema } from "@helper/validation";
 import { useUpdateUserInfo } from "@hooks/mutations";
 import Edit from "@icon/Edit";
-import styles from "@module/Profile/PersonalData.module.css";
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import toast from "react-hot-toast";
+import styles from "@module/Profile/PersonalData.module.css";
 
 function BankData({ debitCard_code, accountIdentifier, shaba_code }) {
   const [edit, setEdit] = useState(false);
@@ -102,7 +102,7 @@ function BankData({ debitCard_code, accountIdentifier, shaba_code }) {
         <>
           <div className={styles.PersonalDataHeader}>
             <h2 className={styles.PersonalDataTitle}>اطلاعات حساب بانکی</h2>
-            <button onClick={() => setEdit(true)}>
+            <button className={styles.editButton}  onClick={() => setEdit(true)}>
               <Edit /> ویرایش اطلاعات
             </button>
           </div>

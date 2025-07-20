@@ -2,9 +2,9 @@
 import { AccountDataValidationSchema } from "@helper/validation";
 import { useUpdateUserInfo } from "@hooks/mutations";
 import Edit from "@icon/Edit";
-import styles from "@module/Profile/PersonalData.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import toast from "react-hot-toast";
+import styles from "@module/Profile/PersonalData.module.css";
 
 import { useState } from "react";
 
@@ -80,7 +80,7 @@ function AccountData({ mobile, email }) {
         <>
           <div className={styles.PersonalDataHeader}>
             <h2 className={styles.PersonalDataTitle}>اطلاعات حساب کاربری</h2>
-            <button onClick={() => setEdit(true)}>
+            <button className={styles.editButton}  onClick={() => setEdit(true)}>
               <Edit /> ویرایش ایمیل
             </button>
           </div>

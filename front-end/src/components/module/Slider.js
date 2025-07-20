@@ -1,7 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
-import React, { useRef, useState } from "react";
+import React from "react";
 
 import "swiper/css";
 import "swiper/css/navigation";

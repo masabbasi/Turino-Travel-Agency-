@@ -76,7 +76,7 @@
   color: red;
   margin: 0.5rem 0;
   height: 1.5rem;
-	margin: 0.5rem;
+  margin: 0.5rem;
 }
 
 .timer {
@@ -112,5 +112,24 @@
 @media screen and (min-width: 576px) {
   .container {
     width: 50rem;
+  }
+}
+
+/* Desktop Size */
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 50rem;
+  }
+
+  .back {
+    cursor: pointer;
+  }
+
+  .button {
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: var(--secondary);
   }
 }

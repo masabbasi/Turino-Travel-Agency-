@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import { Formik, Form } from "formik";
 import { useQueryClient } from "@tanstack/react-query";
@@ -64,6 +65,9 @@ function Otp({ setModal, otpCode, setOtpCode }) {
               if (response.accessToken) {
                 setCookies(response);
                 queryClient.invalidateQueries({ queryKey: ["user"] });
+                toast.success(`شما وارد شدید!`, {
+                  duration: 3000,
+                });
                 setModal(0);
                 setOtpCode({ mobile: "", code: "" });
               } else {

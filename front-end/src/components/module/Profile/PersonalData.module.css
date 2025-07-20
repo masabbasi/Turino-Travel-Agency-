@@ -133,3 +133,28 @@
   height: 1.5rem;
   display: block;
 }
+
+/* Responsive - Mobile First */
+
+/* Desktop Size */
+@media screen and (min-width: 1200px) {
+  .editButton {
+    cursor: pointer;
+  }
+  .editButton:hover {
+    color: #015b74;
+  }
+
+  .PersonalDataEditButton button {
+    cursor: pointer;
+		transition: all 0.3s ease-in;
+  }
+
+  .PersonalDataEditButton button:hover {
+		background-color: var(--secondary);
+  }
+
+  .PersonalDataEditButton button:last-child:hover {
+		color: var(--baseColor);
+  }
+}

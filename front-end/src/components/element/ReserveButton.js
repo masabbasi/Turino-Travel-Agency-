@@ -3,7 +3,7 @@ import { useGetUser } from "@hooks/queries";
 import api from "@services/config";
 import { useState } from "react";
 import { PropagateLoader } from "react-spinners";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 function ReserveButton({ id }) {
   const [blur, setBlur] = useState(false);
@@ -63,7 +63,7 @@ function ReserveButton({ id }) {
           "رزرو و خرید"
         )}
       </button>
-      <Toaster position="top-center" />
+      {/* <Toaster position="top-center" /> */}
     </>
   );
 }

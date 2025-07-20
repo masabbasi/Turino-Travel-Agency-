@@ -1,11 +1,12 @@
 "use client";
+import toast from "react-hot-toast";
 
 import { useEffect, useState } from "react";
 
 import api from "@services/config";
 
-function Timer({otpCode,setOtpCode}) {
-  const [timer, setTimer] = useState(5);
+function Timer({ otpCode, setOtpCode }) {
+  const [timer, setTimer] = useState(10);
   const [isTimerActive, setIsTimerActive] = useState(true);
 
   useEffect(() => {
@@ -28,6 +29,9 @@ function Timer({otpCode,setOtpCode}) {
     });
     if (response.code) {
       setOtpCode({ ...otpCode, code: response.code });
+      toast.success(`کد تائید: ${response.code}`, {
+        duration: 5000,
+      });
     }
     setTimer(30);
     setIsTimerActive(true);

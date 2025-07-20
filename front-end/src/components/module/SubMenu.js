@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 import { clearCookies } from "@utils/cookies";
 
@@ -17,6 +18,9 @@ function SubMenu({ data, setShowSubMenu }) {
   const exitHandler = () => {
     clearCookies();
     queryClient.removeQueries({ queryKey: ["user"] });
+    toast.success(`شما خارج شدید`, {
+      duration: 3000,
+    });
     window.location.replace("/");
   };
 

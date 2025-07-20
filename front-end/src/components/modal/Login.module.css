@@ -89,3 +89,22 @@
     width: 50rem;
   }
 }
+
+/* Desktop Size */
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 50rem;
+  }
+
+  .close {
+    cursor: pointer;
+  }
+
+  .button {
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: var(--secondary);
+  }
+}
