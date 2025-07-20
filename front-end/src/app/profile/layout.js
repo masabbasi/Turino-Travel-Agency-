@@ -10,7 +10,6 @@ import { usePathname } from "next/navigation";
 
 function ProfileLayout({ children }) {
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <div className={styles.profileContainer}>

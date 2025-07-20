@@ -15,6 +15,7 @@ import Profile from "@icon/Profile";
 import ArrowDown from "@icon/ArrowDown";
 
 import styles from "@module/MobileHeader.module.css";
+import { useEffect } from "react";
 
 function MobileHeader({
   toggelHamburger,
@@ -25,6 +26,10 @@ function MobileHeader({
   setShowSubMenu,
   data,
 }) {
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <>
       <nav>

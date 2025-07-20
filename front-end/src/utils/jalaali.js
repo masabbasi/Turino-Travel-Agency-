@@ -17,7 +17,7 @@ const monthNames = [
 
 export const dateToJalaali = (date) => {
   const jalaaliDate = jalaali.toJalaali(new Date(date));
-  return `${jalaaliDate.jd + 1} ${monthNames[jalaaliDate.jm]} ${
+  return `${jalaaliDate.jd} ${monthNames[jalaaliDate.jm-1]} ${
     jalaaliDate.jy
   }`;
 };
