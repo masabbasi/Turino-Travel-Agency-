@@ -103,7 +103,7 @@ function Search() {
           </select>
         </div>
         <div className={styles.searchDate}>
-          <UserDatePicker userDate={userDate} setUserDate={setUserDate} />
+          <UserDatePicker userDate={userDate} setUserDate={setUserDate} formData={formData} />
         </div>
         <div className={styles.searchButton}>
           <button onClick={searchHandler}>جستجو</button>
