@@ -6,20 +6,32 @@ import { useEffect, useState } from "react";
 import { JalaaliToDate } from "@utils/jalaali";
 
 function UserDatePicker({ userDate, setUserDate }) {
-  // const today = new DateObject();
-  const [selectedDates, setSelectedDates] = useState([]);
+  const [selectedDates, setSelectedDates] = useState(null);
 
   useEffect(() => {
-    console.log("userDate", userDate);
-    if (selectedDates[0]) {
-      const date_start = userDate[0] ? new DateObject(userDate[0]) : null;
-      setSelectedDates([date_start, selectedDates[1]]);
-    }
-    if (selectedDates[1]) {
-      const date_end = userDate[1] ? new DateObject(userDate[1]) : null;
-      setSelectedDates([selectedDates[0], date_end]);
-    }
+    console.log("______________userDate", userDate);
+
+    const date_start = userDate[0] ? userDate[0] : null;
+    const date_end = userDate[1] ? userDate[1] : null;
+    setSelectedDates([date_start, date_end]);
   }, [userDate]);
+
+  // useEffect(() => {
+  //   console.log("userDate updated", userDate);
+  //   // همگام‌سازی selectedDates با userDate فقط اگر متفاوت باشند
+  //   if (userDate && userDate.length === 2) {
+  //     const date_start = userDate[0]
+  //       ? new DateObject(new Date(userDate[0]))
+  //       : null;
+  //     const date_end = userDate[1]
+  //       ? new DateObject(new Date(userDate[1]))
+  //       : null;
+  //     const newSelectedDates = [date_start, date_end].filter(Boolean);
+  //     if (JSON.stringify(newSelectedDates) !== JSON.stringify(selectedDates)) {
+  //       setSelectedDates(newSelectedDates);
+  //     }
+  //   }
+  // }, [userDate]);
 
   const changeHandler = (date) => {
     console.log("dateweeeeee", date);
