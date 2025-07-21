@@ -23,5 +23,5 @@ export const dateToJalaali = (date) => {
 };
 
 export const JalaaliToDate = (day, month, year) => {
-  return jalaali.jalaaliToDateObject(year, month, day - 1).toISOString();
+  return jalaali.jalaaliToDateObject(year, month, day).toISOString();
 };

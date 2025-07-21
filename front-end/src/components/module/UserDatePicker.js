@@ -7,21 +7,38 @@ import { JalaaliToDate } from "@utils/jalaali";
 
 function UserDatePicker({ userDate, setUserDate }) {
   // const today = new DateObject();
-  const [selectedDates, setSelectedDates] = useState(null);
+  const [selectedDates, setSelectedDates] = useState([]);
 
   useEffect(() => {
-		const date = new DateObject(userDate)
-    setSelectedDates(date);
+    console.log("userDate", userDate);
+    if (selectedDates[0]) {
+      const date_start = userDate[0] ? new DateObject(userDate[0]) : null;
+      setSelectedDates([date_start, selectedDates[1]]);
+    }
+    if (selectedDates[1]) {
+      const date_end = userDate[1] ? new DateObject(userDate[1]) : null;
+      setSelectedDates([selectedDates[0], date_end]);
+    }
   }, [userDate]);
 
   const changeHandler = (date) => {
+    console.log("dateweeeeee", date);
+    console.log("day0", date[0]?.day);
+    console.log("day1", date[1]?.day);
     setSelectedDates(date);
-    if (date) {
-      const { day, month, year } = date;
-      const convertedDate = JalaaliToDate(day + 1, month.number, year);
-      setUserDate(convertedDate);
-      console.log(convertedDate);
+    if (date[0]) {
+      const { day, month, year } = date[0];
+      const convertedDate = JalaaliToDate(day, month.number, year);
+      console.log("convert-start", convertedDate);
+      setUserDate([convertedDate, userDate[1]]);
     }
+    if (date[1]) {
+      const { day, month, year } = date[1];
+      const convertedDate = JalaaliToDate(day, month.number, year);
+      console.log("convert-end", convertedDate);
+      setUserDate([userDate[0], convertedDate]);
+    }
+    console.log("dataUserrrrrr", userDate);
   };
 
   return (
@@ -43,6 +60,7 @@ function UserDatePicker({ userDate, setUserDate }) {
         calendar={jalali}
         locale={persian_fa}
         format="DD/MM/YYYY"
+        range
       />
     </>
   );

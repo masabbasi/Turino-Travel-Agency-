@@ -18,7 +18,7 @@ const cities = [
 ];
 
 function Search() {
-  const [userDate, setUserDate] = useState(null);
+  const [userDate, setUserDate] = useState(["", ""]);
 
   const router = useRouter();
 
@@ -27,7 +27,8 @@ function Search() {
   const [formData, setFormData] = useState({
     destination: "",
     origin: "",
-    startDate: "",
+    startDate: null,
+    endDate: null,
   });
 
   const selectChangeHandler = (e) => {
@@ -36,7 +37,11 @@ function Search() {
   };
 
   useEffect(() => {
-    setFormData((prev) => ({ ...prev, startDate: userDate }));
+    setFormData((prev) => ({
+      ...prev,
+      startDate: userDate[0],
+      endDate: userDate[1],
+    }));
   }, [userDate]);
 
   const searchHandler = async (e) => {
@@ -49,13 +54,16 @@ function Search() {
     const origin = searchParams.get("origin") || "";
     const destination = searchParams.get("destination") || "";
     const startDate = searchParams.get("startDate") || null;
+    const endDate = searchParams.get("endDate") || null;
+
     setFormData({
       origin,
       destination,
       startDate,
+      endDate,
     });
-    setUserDate(formData.startDate);
-  }, [searchParams, formData]);
+    setUserDate([startDate, endDate]);
+  }, [searchParams]);
 
   return (
     <div className={styles.searchContainer}>
