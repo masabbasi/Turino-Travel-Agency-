@@ -5,14 +5,22 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import { useEffect, useState } from "react";
 import { JalaaliToDate } from "@utils/jalaali";
 
-function UserDatePicker({ userDate, setUserDate, formData }) {
+function UserDatePicker({ userDate, setUserDate }) {
   const [selectedDates, setSelectedDates] = useState(null);
 
   useEffect(() => {
-    const date_start = userDate[0] ? userDate[0] : null;
-    const date_end = userDate[1] ? userDate[1] : null;
+    console.log("userDate on mount:", userDate);
+    const date_start =
+      userDate[0] && userDate[0] !== ""
+        ? new DateObject(new Date(userDate[0]))
+        : null;
+    const date_end =
+      userDate[1] && userDate[1] !== ""
+        ? new DateObject(new Date(userDate[1]))
+        : null;
+    console.log("Setting selectedDates:", [date_start, date_end]);
     setSelectedDates([date_start, date_end]);
-  }, [formData]);
+  }, []);
 
   // useEffect(() => {
   //   console.log("userDate updated", userDate);
@@ -70,6 +78,7 @@ function UserDatePicker({ userDate, setUserDate, formData }) {
         locale={persian_fa}
         format="DD/MM/YYYY"
         range
+				placeholder="انتخاب تاریخ رفت و برگشت"
       />
     </>
   );

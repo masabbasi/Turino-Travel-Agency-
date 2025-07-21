@@ -18,7 +18,7 @@ const cities = [
 ];
 
 function Search() {
-  const [userDate, setUserDate] = useState(["", ""]);
+  const [userDate, setUserDate] = useState([null, null]);
 
   const router = useRouter();
 
@@ -103,7 +103,11 @@ function Search() {
           </select>
         </div>
         <div className={styles.searchDate}>
-          <UserDatePicker userDate={userDate} setUserDate={setUserDate} formData={formData} />
+          <UserDatePicker
+            userDate={userDate}
+            setUserDate={setUserDate}
+            formData={formData}
+          />
         </div>
         <div className={styles.searchButton}>
           <button onClick={searchHandler}>جستجو</button>
