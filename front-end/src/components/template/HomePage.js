@@ -10,7 +10,6 @@ import Link from "next/link";
 async function HomePage({ searchParams }) {
   let tours = [];
   const { origin, destination, startDate } = searchParams;
-  console.log("searchParams", searchParams);
 
   if (!!origin || !!destination || !!startDate) {
     const params = [];

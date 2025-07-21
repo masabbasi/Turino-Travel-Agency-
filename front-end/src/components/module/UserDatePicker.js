@@ -1,12 +1,18 @@
 "use client";
-import DatePicker from "react-multi-date-picker";
+import DatePicker, { DateObject } from "react-multi-date-picker";
 import jalali from "react-date-object/calendars/jalali";
 import persian_fa from "react-date-object/locales/persian_fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { JalaaliToDate } from "@utils/jalaali";
 
-function UserDatePicker({ setUserDate }) {
+function UserDatePicker({ userDate, setUserDate }) {
+  // const today = new DateObject();
   const [selectedDates, setSelectedDates] = useState(null);
+
+  useEffect(() => {
+		const date = new DateObject(userDate)
+    setSelectedDates(date);
+  }, [userDate]);
 
   const changeHandler = (date) => {
     setSelectedDates(date);
@@ -14,7 +20,7 @@ function UserDatePicker({ setUserDate }) {
       const { day, month, year } = date;
       const convertedDate = JalaaliToDate(day + 1, month.number, year);
       setUserDate(convertedDate);
-			console.log(convertedDate);
+      console.log(convertedDate);
     }
   };
 

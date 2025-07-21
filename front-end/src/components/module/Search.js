@@ -27,7 +27,7 @@ function Search() {
   const [formData, setFormData] = useState({
     destination: "",
     origin: "",
-    startDate: null,
+    startDate: "",
   });
 
   const selectChangeHandler = (e) => {
@@ -49,17 +49,13 @@ function Search() {
     const origin = searchParams.get("origin") || "";
     const destination = searchParams.get("destination") || "";
     const startDate = searchParams.get("startDate") || null;
-
     setFormData({
       origin,
       destination,
       startDate,
     });
-
-    if (formData.startDate) {
-      setUserDate(formData.startDate);
-    }
-  }, [searchParams]);
+    setUserDate(formData.startDate);
+  }, [searchParams, formData]);
 
   return (
     <div className={styles.searchContainer}>

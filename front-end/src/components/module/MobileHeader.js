@@ -26,10 +26,6 @@ function MobileHeader({
   setShowSubMenu,
   data,
 }) {
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <>
       <nav>
