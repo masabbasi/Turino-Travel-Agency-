@@ -2,47 +2,28 @@
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import jalali from "react-date-object/calendars/jalali";
 import persian_fa from "react-date-object/locales/persian_fa";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { JalaaliToDate } from "@utils/jalaali";
 
 function UserDatePicker({ userDate, setUserDate }) {
   const [selectedDates, setSelectedDates] = useState(null);
+  const isFirstChange = useRef(true); // برای ردیابی اولین تغییر
 
   useEffect(() => {
-    console.log("userDate on mount:", userDate);
-    const date_start =
-      userDate[0] && userDate[0] !== ""
-        ? new DateObject(new Date(userDate[0]))
+    console.log("userDate updated:", userDate);
+    if (isFirstChange.current && (userDate[0] || userDate[1])) {
+      const date_start = userDate[0]
+        ? new DateObject(userDate[0]).subtract(2, "day")
         : null;
-    const date_end =
-      userDate[1] && userDate[1] !== ""
-        ? new DateObject(new Date(userDate[1]))
+      const date_end = userDate[1]
+        ? new DateObject(userDate[1]).subtract(2, "day")
         : null;
-    console.log("Setting selectedDates:", [date_start, date_end]);
-    setSelectedDates([date_start, date_end]);
-  }, []);
-
-  // useEffect(() => {
-  //   console.log("userDate updated", userDate);
-  //   // همگام‌سازی selectedDates با userDate فقط اگر متفاوت باشند
-  //   if (userDate && userDate.length === 2) {
-  //     const date_start = userDate[0]
-  //       ? new DateObject(new Date(userDate[0]))
-  //       : null;
-  //     const date_end = userDate[1]
-  //       ? new DateObject(new Date(userDate[1]))
-  //       : null;
-  //     const newSelectedDates = [date_start, date_end].filter(Boolean);
-  //     if (JSON.stringify(newSelectedDates) !== JSON.stringify(selectedDates)) {
-  //       setSelectedDates(newSelectedDates);
-  //     }
-  //   }
-  // }, [userDate]);
+      setSelectedDates([date_start, date_end]);
+      isFirstChange.current = false;
+    }
+  }, [userDate]);
 
   const changeHandler = (date) => {
-    // console.log("dateweeeeee", date);
-    // console.log("day0", date[0]?.day);
-    // console.log("day1", date[1]?.day);
     setSelectedDates(date);
     if (date[0]) {
       const { day, month, year } = date[0];
@@ -78,7 +59,7 @@ function UserDatePicker({ userDate, setUserDate }) {
         locale={persian_fa}
         format="DD/MM/YYYY"
         range
-				placeholder="انتخاب تاریخ رفت و برگشت"
+        placeholder="انتخاب تاریخ رفت و برگشت"
       />
     </>
   );

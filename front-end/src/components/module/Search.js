@@ -23,6 +23,7 @@ function Search() {
   const router = useRouter();
 
   const searchParams = useSearchParams();
+	console.log(searchParams);
 
   const [formData, setFormData] = useState({
     destination: "",
@@ -51,6 +52,7 @@ function Search() {
   };
 
   useEffect(() => {
+		console.log("effect");
     const origin = searchParams.get("origin") || "";
     const destination = searchParams.get("destination") || "";
     const startDate = searchParams.get("startDate") || null;
