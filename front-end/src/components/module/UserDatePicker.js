@@ -7,17 +7,13 @@ import { JalaaliToDate } from "@utils/jalaali";
 
 function UserDatePicker({ userDate, setUserDate }) {
   const [selectedDates, setSelectedDates] = useState(null);
-  const isFirstChange = useRef(true); // برای ردیابی اولین تغییر
+  const isFirstChange = useRef(true);
 
   useEffect(() => {
     console.log("userDate updated:", userDate);
     if (isFirstChange.current && (userDate[0] || userDate[1])) {
-      const date_start = userDate[0]
-        ? new DateObject(userDate[0]).subtract(2, "day")
-        : null;
-      const date_end = userDate[1]
-        ? new DateObject(userDate[1]).subtract(2, "day")
-        : null;
+      const date_start = userDate[0] ? userDate[0] : null;
+      const date_end = userDate[1] ? userDate[1] : null;
       setSelectedDates([date_start, date_end]);
       isFirstChange.current = false;
     }
