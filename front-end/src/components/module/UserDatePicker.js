@@ -3,17 +3,17 @@ import DatePicker, { DateObject } from "react-multi-date-picker";
 import jalali from "react-date-object/calendars/jalali";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { useEffect, useRef, useState } from "react";
-import { JalaaliToDate } from "@utils/jalaali";
+import { JalaaliToDate, dateToJalaali } from "@utils/jalaali";
 
 function UserDatePicker({ userDate, setUserDate }) {
   const [selectedDates, setSelectedDates] = useState(null);
   const isFirstChange = useRef(true);
 
   useEffect(() => {
-    console.log("userDate updated:", userDate);
     if (isFirstChange.current && (userDate[0] || userDate[1])) {
-      const date_start = userDate[0] ? userDate[0] : null;
-      const date_end = userDate[1] ? userDate[1] : null;
+      const date_start = userDate[0] ? new DateObject(userDate[0]).subtract(1, 'day') : null;
+      console.log("userData", dateToJalaali(date_start));
+      const date_end = userDate[1] ? new DateObject(userDate[1]).subtract(1, 'day') : null;
       setSelectedDates([date_start, date_end]);
       isFirstChange.current = false;
     }
@@ -23,14 +23,16 @@ function UserDatePicker({ userDate, setUserDate }) {
     setSelectedDates(date);
     if (date[0]) {
       const { day, month, year } = date[0];
-      const convertedDate = JalaaliToDate(day, month.number, year);
-      console.log("convert-start", convertedDate);
+      const convertedDate = JalaaliToDate(day, month.number, year)
+        .slice(0, 10)
+        .toString();
       setUserDate([convertedDate, userDate[1]]);
     }
     if (date[1]) {
       const { day, month, year } = date[1];
-      const convertedDate = JalaaliToDate(day, month.number, year);
-      console.log("convert-end", convertedDate);
+      const convertedDate = JalaaliToDate(day, month.number, year)
+        .slice(0, 10)
+        .toString();
       setUserDate([userDate[0], convertedDate]);
     }
   };

@@ -1,16 +1,20 @@
 "use client";
-import { Formik, Form, ErrorMessage } from "formik";
-import styles from "@app/reserve/[tourId]/ReserveTour.module.css";
-import api from "@services/config";
+
 import { useEffect, useState } from "react";
-import Profile from "@icon/Profile";
-import { calculateTourDuration } from "@utils/calculateTourDuration";
-import { useParams } from "next/navigation";
-import { reserveValidationSchema } from "@helper/validation";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+
+import { Formik, Form, ErrorMessage } from "formik";
 import toast, { Toaster } from "react-hot-toast";
 import { PropagateLoader } from "react-spinners";
+
 import { useGetUserBasket } from "@hooks/queries";
+import api from "@services/config";
+import Profile from "@icon/Profile";
+import { calculateTourDuration } from "@utils/calculateTourDuration";
+import { reserveValidationSchema } from "@helper/validation";
+
+import styles from "@app/reserve/[tourId]/ReserveTour.module.css";
 
 function reserveTour() {
   const [tour, setTour] = useState({});

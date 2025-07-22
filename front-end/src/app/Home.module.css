@@ -15,10 +15,6 @@
 
 /* Responsive - Mobile First */
 
-/* Small Device Size */
-@media screen and (min-width: 450px) {
-}
-
 /* Mobile Size */
 @media screen and (min-width: 576px) {
   .topImage img {
@@ -38,8 +34,4 @@
   .topImage img {
     height: 35rem;
   }
-}
-
-/* Desktop Size */
-@media screen and (min-width: 1200px) {
 }

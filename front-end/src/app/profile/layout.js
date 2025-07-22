@@ -1,12 +1,13 @@
 "use client";
 
-import styles from "@app/profile/ProfileLayout.module.css";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import ConvertCard from "@icon/ConvertCard";
 import Profile from "@icon/Profile";
 import SunFog from "@icon/SunFog";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+
+import styles from "@app/profile/ProfileLayout.module.css";
 
 function ProfileLayout({ children }) {
   const pathname = usePathname();

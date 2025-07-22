@@ -17,11 +17,11 @@ const monthNames = [
 
 export const dateToJalaali = (date) => {
   const jalaaliDate = jalaali.toJalaali(new Date(date));
-  return `${jalaaliDate.jd} ${monthNames[jalaaliDate.jm-1]} ${
+  return `${jalaaliDate.jd} ${monthNames[jalaaliDate.jm - 1]} ${
     jalaaliDate.jy
   }`;
 };
 
 export const JalaaliToDate = (day, month, year) => {
-  return jalaali.jalaaliToDateObject(year, month, day+1).toISOString();
+  return jalaali.jalaaliToDateObject(year, month, day + 1).toISOString();
 };

@@ -4,7 +4,8 @@ import { getCookies } from "@utils/cookies";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:6500",
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  // withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },

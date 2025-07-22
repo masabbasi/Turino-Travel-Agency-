@@ -15,6 +15,16 @@ import ReserveButton from "src/components/element/ReserveButton";
 import { tourNameFromEnToFa } from "@helper/tourNameFromEnToFa";
 import { tourFleetVehicleFromEnToFa } from "@helper/tourFleetVehicleFromEnToFa";
 
+export async function generateMetadata({ params }) {
+  const data = await api.get(`/tour/${params.tourId}`);
+  const { title } = data;
+
+  return {
+    title: `${title} | تورینو`,
+    description: `جزئیات و اطلاعات  ${title}`,
+  };
+}
+
 async function TourDetail({ params }) {
   const data = await api.get(`/tour/${params.tourId}`);
 

@@ -19,7 +19,6 @@
     "react-hot-toast": "^2.5.2",
     "react-multi-date-picker": "^4.5.2",
     "react-spinners": "^0.17.0",
-    "react18-input-otp": "^1.1.4",
     "swiper": "^11.2.10",
     "yup": "^1.6.1"
   },

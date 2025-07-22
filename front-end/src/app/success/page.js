@@ -1,5 +1,8 @@
-import styles from "@app/success/Success.module.css";
+"use client";
+
 import Link from "next/link";
+
+import styles from "@app/success/Success.module.css";
 
 function Success() {
   return (
