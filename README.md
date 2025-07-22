@@ -2,7 +2,7 @@
 
 ![لوگوی تورینو](https://raw.githubusercontent.com/masabbasi/Turino-Travel-Agency-/main/front-end/public/images/logo.webp)
 
-سامانه جامع رزرو آنلاین تورهای مسافرتی با قابلیت مدیریت کاربران و پرداخت آنلاین
+سامانه جامع رزرو آنلاین تورهای مسافرتی با قابلیت رزرو تور، پرداخت و ویرایش اطلاعات کاربر.
 
 ## 🚀 لینک مخزن پروژه
 🔗 [مخزن گیت‌هاب پروژه](https://github.com/masabbasi/Turino-Travel-Agency-)
@@ -17,4 +17,5 @@
 ### 1. کپی کردن مخزن
 ```bash
 git clone https://github.com/masabbasi/Turino-Travel-Agency-.git
+```bash
 cd Turino-Travel-Agency-
