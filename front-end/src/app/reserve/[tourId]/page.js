@@ -16,7 +16,7 @@ import { reserveValidationSchema } from "@helper/validation";
 
 import styles from "@app/reserve/[tourId]/ReserveTour.module.css";
 
-function reserveTour() {
+function ReserveTour() {
   const [tour, setTour] = useState({});
   const params = useParams();
   const router = useRouter();
@@ -166,4 +166,4 @@ function reserveTour() {
   );
 }
 
-export default reserveTour;
+export default ReserveTour;
